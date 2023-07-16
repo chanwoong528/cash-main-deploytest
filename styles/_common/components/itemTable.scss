@@ -1,0 +1,123 @@
+.itemtable {
+  max-width: 1200px;
+  margin: 0 auto;
+  header {
+    margin-top: 110px;
+    margin-bottom: 47px;
+
+    h2 {
+      font-size: 30px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.33;
+      letter-spacing: -0.75px;
+      text-align: center;
+      color: #1d1d1d;
+      margin-bottom: 7.3px;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.87;
+      letter-spacing: -0.4px;
+      text-align: center;
+      color: #666;
+    }
+  }
+}
+
+.itemtable-nav {
+  margin-bottom: 50px;
+  ul {
+    display: flex;
+    height: 45px;
+
+    > li {
+      border: solid 1px #e1e1e1;
+      width: 173px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      button {
+        width: 100%;
+        height: 100%;
+
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.58;
+        letter-spacing: -0.4px;
+        text-align: center;
+        color: #666;
+      }
+    }
+
+    > li.on {
+      background-color: #0071e3;
+
+      button {
+        color: #fff;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.shoppingmall-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px 29px;
+  height: 372px;
+
+  > li {
+    width: 278px;
+    height: 176px;
+    border-radius: 10px;
+    border: solid 1px #e1e1e1;
+    display: flex;
+    flex-direction: column;
+
+    a {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+
+      .image-box {
+        margin-top: 24px;
+        height: 60px;
+        width: 120px;
+      }
+
+      h3 {
+        margin-top: 14.7px;
+        font-family: "Noto Sans KR";
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 1.63;
+        letter-spacing: -0.4px;
+        text-align: center;
+        color: #999;
+        white-space: nowrap;
+      }
+
+      p {
+        margin-top: 1.7px;
+        font-family: "Noto Sans KR";
+        font-size: 22px;
+        font-weight: bold;
+        line-height: 1.82;
+        letter-spacing: -0.55px;
+        text-align: center;
+        color: #1d1d1d;
+        white-space: nowrap;
+      }
+    }
+  }
+}

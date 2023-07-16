@@ -1,95 +1,44 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+//@ts-nocheck
+import Image from "next/image";
+import { getShoppingMallList } from "./(http)/productApi";
+import ItemTable from "./(Components)/ItemTable/ItemTable";
 
-export default function Home() {
+async function getData() {
+  let params = {
+    pageNumber: 1,
+    pageSize: 1,
+  };
+  const mallData = await getShoppingMallList(params);
+  // {
+  //   subCateg: '8',
+  //   imageLink: 'http://img.linkprice.com/files/glink/klook/20181011/5bbee16a419bd_120_60.jpg',
+  //   merchantId: 'klook',
+  //   mainCateg: 'MER_TRAVEL', MER_SHOPPING, MER_ETC, all
+  //   siteName: '클룩',
+  //   commission: '7%'
+  // }
+  console.log(mallData)
+  return mallData;
+}
+
+export default async function Home() {
+  const mallList = await getData();
+  const mallNavList = [
+    { label: "전체", navId: "all" },
+    { label: "쇼핑", navId: "MER_SHOPPING" },
+    { label: "여행", navId: "MER_TRAVEL" },
+    { label: "기타", navId: "MER_ETC" },
+  ];
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    <>
+      <ItemTable
+        title="쇼핑몰"
+        content="쇼핑할때마다 캐시백이 최대 20%"
+        navList={mallNavList}
+        mallList={mallList}
+      />
+    
+    </>
+  );
 }
