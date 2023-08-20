@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
-import Router from 'next/router'
+// import React, { useState } from 'react'
 import Link from 'next/link';
 import Image from 'next/image';
 
 
-import { hotdealNavMenuList } from "../../utils/Constants";
-import InnerNav from '../../(Components)/common/InnerNav'
-import axios from 'axios';
-import Paging from '../../(Components)/layout/Paging';
+// import { hotdealNavMenuList } from "../../utils/Constants";
+// import InnerNav from '../../(Components)/common/InnerNav'
+// import axios from 'axios';
+// import Paging from '../../(Components)/layout/Paging';
 
 export default function Index({ hotdealList, maxPage }) {
     const [curpage, setCurPage] = useState(1);
