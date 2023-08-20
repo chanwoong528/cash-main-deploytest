@@ -69,18 +69,20 @@ const TopNav = () => {
         </ul>
       </nav>
       <nav className="nav-cate">
-        <ul className="cate-list">
-          <li className={pathname.includes("/shopping") ? "selected" : ""}>
-            <Link href="/shopping">쇼핑몰</Link>
-          </li>
-          <li className={pathname.includes("/hotdeal") ? "selected" : ""}>
-            <Link href="/hotdeal">핫딜상품</Link>
-          </li>
-          <li className={pathname.includes("/points") ? "selected" : ""}>
-            <Link href="/points">포인트샵</Link>
-          </li>
-        </ul>
-        <button className="cashback-btn">캐시백 받는 방법</button>
+        <div className="nav-con">
+          <ul className="cate-list">
+            <li className={pathname.includes("/shopping") ? "selected" : ""}>
+              <Link href="/shopping">쇼핑몰</Link>
+            </li>
+            <li className={pathname.includes("/hotdeal") ? "selected" : ""}>
+              <Link href="/hotdeal">핫딜상품</Link>
+            </li>
+            <li className={pathname.includes("/points") ? "selected" : ""}>
+              <Link href="/points">포인트샵</Link>
+            </li>
+          </ul>
+          <button className="cashback-btn">캐시백 받는 방법</button>
+        </div>
       </nav>
     </>
   );

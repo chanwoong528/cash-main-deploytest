@@ -1,9 +1,13 @@
 @use "./_common/reset";
+@use "./_common/_fonts";
 
-@use "./_common/components/topNav.scss";
-@use "./_common/components/footer.scss";
-@use "./_common/components/itemTable.scss";
+@use "./components/topNav.scss";
+@use "./components/footer.scss";
+@use "./components/itemTable.scss";
+
+@use "./pages/mainPage.scss";
 * {
   box-sizing: border-box;
   font-family: "Noto Sans KR", sans-serif;
+  letter-spacing: -0.02em;
 }

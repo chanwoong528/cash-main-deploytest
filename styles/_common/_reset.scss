@@ -83,14 +83,16 @@ summary,
 time,
 mark,
 audio,
+var,
 video {
   margin: 0;
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
   vertical-align: baseline;
   text-decoration: none;
+  font-style: normal;
+  color: #111;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -128,7 +130,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-button{
+button {
   background-color: transparent;
   border-width: 0;
   font-family: inherit;

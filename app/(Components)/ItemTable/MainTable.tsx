@@ -80,7 +80,6 @@ const HotDealItem = ({ itemData }) => {
 };
 
 const MainTable = ({ title, content, navData, tableData, tableCate }) => {
-  console.log(tableData);
   const DEFAULT_TAB = useMemo(() => {
     switch (tableCate) {
       case CATE_LABEL.SHOPPING:
@@ -121,7 +120,9 @@ const MainTable = ({ title, content, navData, tableData, tableCate }) => {
     setFilteredList(tableData.filter((item, idx) => item.mainCateg === navId));
   }, []);
   return (
-    <section className="itemtable">
+    <section
+      className={`itemtable${tableCate === CATE_LABEL.MERCHANT ? " color" : ""}`}
+    >
       <header>
         <h2>{title}</h2>
         {content && <p>{content}</p>}
@@ -159,7 +160,13 @@ const MainTable = ({ title, content, navData, tableData, tableCate }) => {
       >
         {renderItem(tableCate, filteredList)}
       </ul>
-      <MoreHref title={`${title} 전체보기`} href={URL[tableCate]} color />
+      <MoreHref
+        title={`${
+          tableCate !== CATE_LABEL.MERCHANT ? title : "핫 딜 상품"
+        } 전체보기`}
+        href={URL[tableCate]}
+        color={tableCate !== CATE_LABEL.MERCHANT}
+      />
     </section>
   );
 };

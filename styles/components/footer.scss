@@ -1,6 +1,6 @@
 .main-footer {
   width: 100%;
-  max-width: 1200px;
+
   height: 236px;
   margin: auto;
 
@@ -9,9 +9,12 @@
     border-top: 1px solid #e1e1e1;
     border-bottom: 1px solid #e1e1e1;
     ul {
+      max-width: 1200px;
       display: flex;
+      align-items: center;
+      height: 100%;
+      margin: 0 auto;
 
-      margin-top: 14.5px;
       > li {
         padding: 0 20px;
         border-right: 1px solid rgba(#000, 0.2);
@@ -39,8 +42,10 @@
   }
 
   .sub-footer {
-    margin-top: 34px;
     display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 34px;
     padding-bottom: 40px;
 
     h4,

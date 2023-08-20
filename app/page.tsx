@@ -1,6 +1,7 @@
 //@ts-nocheck
-import { getShoppingMallList } from "./(http)/productApi";
+import Image from "next/image";
 
+import { getShoppingMallList } from "./(http)/productApi";
 import MainTable from "./(Components)/ItemTable/MainTable";
 
 import { CATE_LABEL } from "./(util)/CATEGORY";
@@ -26,6 +27,9 @@ export default async function Home() {
   const data = await getData();
   return (
     <>
+      <article className="main-jumbo">
+        <Image width={1200} height={485} src="/asset/images/main-jumbo.png" />
+      </article>
       <MainTable
         title="쇼핑몰"
         content="쇼핑할때마다 캐시백이 최대 20%"
@@ -33,6 +37,23 @@ export default async function Home() {
         navData={data.mallD.categList}
         tableCate={CATE_LABEL.SHOPPING}
       />
+      <article className="main-banner">
+        <h3>스마트한 쇼핑 습관</h3>
+        <ol>
+          <li>
+            <p>회원가입</p>
+          </li>
+          <li>
+            <p>쇼핑 경유</p>
+          </li>
+          <li>
+            <p>캐시적립</p>
+          </li>
+          <li>
+            <p>환급or쿠폰</p>
+          </li>
+        </ol>
+      </article>
       <MainTable
         title="MD추천 핫 딜 상품"
         tableData={data.hotD.hotdealList}
