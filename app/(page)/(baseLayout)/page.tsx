@@ -1,10 +1,11 @@
 //@ts-nocheck
 import Image from "next/image";
 
-import { getShoppingMallList } from "./(http)/productApi";
-import MainTable from "./(Components)/ItemTable/MainTable";
+import { getShoppingMallList } from "@/app/(http)/productApi";
 
-import { CATE_LABEL } from "./(util)/CATEGORY";
+import MainTable from "@/app/(Components)/ItemTable/MainTable";
+
+import { CATE_LABEL } from "@/app/(util)/CATEGORY";
 
 async function getData() {
   let params = {

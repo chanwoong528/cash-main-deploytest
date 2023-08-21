@@ -55,12 +55,27 @@ const TopNav = () => {
             {showCS && (
               <ul className="cs-list">
                 <li>
-                  <Link href="/">공지사항</Link>
+                  <Link
+                    onClick={() => {
+                      setShowCS(false);
+                    }}
+                    href="/customer"
+                  >
+                    공지사항
+                  </Link>
                 </li>
-                <li>
-                  <Link href="/">FAQ</Link>
+                <li
+                  onClick={() => {
+                    setShowCS(false);
+                  }}
+                >
+                  <Link href="/customer/faq">FAQ</Link>
                 </li>
-                <li>
+                <li
+                  onClick={() => {
+                    setShowCS(false);
+                  }}
+                >
                   <Link href="/">카카오톡 문의</Link>
                 </li>
               </ul>

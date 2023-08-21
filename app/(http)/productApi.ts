@@ -1,7 +1,7 @@
 //@ts-nocheck
 import http from "./http";
 
-export const getShoppingMallList = async (urlGubun,params) => {
+export const getShoppingMallList = async (urlGubun, params) => {
   const fetchMallList = await http.get(
     `/main/${urlGubun}`,
     {},

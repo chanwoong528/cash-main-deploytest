@@ -6,6 +6,9 @@
 @use "./components/itemTable.scss";
 
 @use "./pages/mainPage.scss";
+@use "./pages/authPage.scss";
+@use "./pages/customerPage.scss";
+
 * {
   box-sizing: border-box;
   font-family: "Noto Sans KR", sans-serif;
