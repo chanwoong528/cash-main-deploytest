@@ -30,7 +30,7 @@ const page = async () => {
         <tbody>
           {data.map((noticeItem) => {
             return (
-              <tr>
+              <tr key={noticeItem.idx}>
                 <th scope="col">
                   <a href="">{noticeItem.idx}</a>
                 </th>
