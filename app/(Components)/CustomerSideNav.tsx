@@ -1,12 +1,10 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const CustomerSideNav = () => {
   const pathname = usePathname();
-  console.log(pathname);
   return (
     <nav>
       <ol className="breadcrumbs">

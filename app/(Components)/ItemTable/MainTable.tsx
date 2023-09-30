@@ -1,83 +1,13 @@
 //@ts-nocheck
 "use client";
 import React, { useState, useMemo, useCallback } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import MoreHref from "../Buttons/MoreHref";
-import { CATE_LABEL, URL } from "../../(util)/CATEGORY";
-const PointItem = ({ itemData }) => {
-  return (
-    <li>
-      <a href="">
-        <div className="image-box">
-          <Image
-            src={`https://${itemData.image}`}
-            width={120}
-            height={120}
-            alt={itemData.brandName}
-            // onError={(event) => console.log("@@@ ", event)}
-          />
-        </div>
-        <h3>{itemData.brandName}</h3>
-      </a>
-    </li>
-  );
-};
-const ShoppingItem = ({ itemData }) => {
-  return (
-    <li>
-      <a href="">
-        <div className="image-box">
-          <Image
-            src={itemData.imageLink}
-            width={120}
-            height={60}
-            alt={itemData.siteName}
-            onError={(event) => console.log(event)}
-          />
-        </div>
-        <h3>{itemData.siteName}</h3>
-        <p>최대 {itemData.commission} 캐시백</p>
-      </a>
-    </li>
-  );
-};
 
-const HotDealItem = ({ itemData }) => {
-  return (
-    <li key={itemData.productName}>
-      <Link href={`/hotdeal/${itemData.productName}`}>
-        <div className="image-box">
-          <Image
-            src={itemData.image.includes("http") ? itemData.image : ""}
-            width={260}
-            height={260}
-            objectFit="contain"
-            alt={itemData.title}
-          />
-        </div>
-        <h3>{itemData.name}</h3>
-        <div className="info-box">
-          <var className="percent">{`${itemData.sale}`}%</var>
-          <div className="price-box">
-            <var className="op">
-              {`${itemData.listPrice
-                .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
-              <abbr>원</abbr>
-            </var>
-            <var className="cp">
-              {`${itemData.price
-                .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
-              <abbr>원</abbr>
-            </var>
-          </div>
-        </div>
-      </Link>
-    </li>
-  );
-};
+import { CATE_LABEL, URL } from "../../(util)/CATEGORY";
+
+import ShoppingItem from "./TableItem/ShoppingItem";
+import HotDealItem from "./TableItem/HotDealItem";
+import PointItem from "./TableItem/PointItem";
 
 const MainTable = ({ title, content, navData, tableData, tableCate }) => {
   const DEFAULT_TAB = useMemo(() => {
@@ -121,7 +51,9 @@ const MainTable = ({ title, content, navData, tableData, tableCate }) => {
   }, []);
   return (
     <section
-      className={`itemtable${tableCate === CATE_LABEL.MERCHANT ? " color" : ""}`}
+      className={`itemtable${
+        tableCate === CATE_LABEL.MERCHANT ? " color" : ""
+      }`}
     >
       <header>
         <h2>{title}</h2>

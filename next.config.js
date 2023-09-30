@@ -5,7 +5,7 @@ const withImages = require("next-images");
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
- 
+
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
@@ -14,6 +14,10 @@ const nextConfig = {
       {
         protocol: "http",
         hostname: "**",
+      },
+      {
+        protocol: "http",
+        hostname: "gdimg.gmarket.co.kr",
       },
       {
         protocol: "https",

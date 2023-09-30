@@ -1,7 +1,7 @@
 //@ts-nocheck
 import Image from "next/image";
 
-import { getShoppingMallList } from "@/app/(http)/productApi";
+import { getShoppingMallList } from "@/app/(http)/apis/productApi";
 
 import MainTable from "@/app/(Components)/ItemTable/MainTable";
 
@@ -27,9 +27,17 @@ async function getData() {
 export default async function Home() {
   const data = await getData();
   return (
-    <>
+    <main>
       <article className="main-jumbo">
-        <Image width={1200} height={485} src="/asset/images/main-jumbo.png" />
+        <Image
+          width={1200}
+          height={485}
+          src="/asset/images/main-jumbo.png"
+          style={{
+            maxWidth: "100%",
+            height: "auto",
+          }}
+        />
       </article>
       <MainTable
         title="쇼핑몰"
@@ -67,6 +75,6 @@ export default async function Home() {
         navData={data.pointD.categList}
         tableCate={CATE_LABEL.POINT}
       />
-    </>
+    </main>
   );
 }

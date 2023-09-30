@@ -1,6 +1,6 @@
 //@ts-nocheck
 import React from "react";
-import { getNotices } from "@/app/(http)/customerApi";
+import { getNotices } from "@/app/(http)/apis/customerApi";
 
 async function generateStaticParams() {
   const noticeData = await getNotices();

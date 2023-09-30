@@ -1,0 +1,12 @@
+.detail-nav {
+  border: 10px solid red;
+  ul {
+    display: flex;
+    gap: 10px;
+    li {
+      &.on {
+        border: 1px solid blue;
+      }
+    }
+  }
+}

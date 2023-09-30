@@ -1,5 +1,5 @@
 //@ts-nocheck
-import http from "./http";
+import http from "../http";
 
 export const getNotices = async () => {
   try {
