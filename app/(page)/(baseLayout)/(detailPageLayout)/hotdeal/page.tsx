@@ -3,11 +3,11 @@ import React from "react";
 import Image from "next/image";
 
 import DetailPageNav from "@/app/(Components)/Nav/DetailPageNav";
+import HotdealCard from "@/app/(Components)/HotdealCard";
 
 import { getCategories, getDetailList } from "@/app/(http)/apis/detailApi";
 import { CATE_LABEL, URL } from "@/app/(util)/CATEGORY";
 import "../../../../../styles/pages/hotDeal.scss";
-import HotdealCard from "@/app/(Components)/HotdealCard";
 
 async function getData(searchParams) {
   console.log(searchParams);
