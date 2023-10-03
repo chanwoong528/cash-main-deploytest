@@ -7,7 +7,6 @@ import DetailPageNav from "@/app/(Components)/Nav/DetailPageNav";
 import { getCategories, getDetailList } from "@/app/(http)/apis/detailApi";
 import { CATE_LABEL, URL } from "@/app/(util)/CATEGORY";
 import "../../../../../styles/pages/hotDeal.scss";
-import HotDealItem from "@/app/(Components)/ItemTable/TableItem/HotDealItem";
 import HotdealCard from "@/app/(Components)/HotdealCard";
 
 async function getData(searchParams) {
