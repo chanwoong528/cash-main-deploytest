@@ -1,11 +1,26 @@
 .detail-nav {
-  border: 10px solid red;
+  display: flex;
+  justify-content: center;
+  height: 60px;
+  background-color: #f1f1f1;
   ul {
     display: flex;
-    gap: 10px;
+
+    gap: 50px;
+    width: 100%;
+    max-width: 1200px;
     li {
+      height: 100%;
       &.on {
-        border: 1px solid blue;
+        border-bottom: 1px solid #0071e3;
+        > button {
+          color: #0071e3;
+          font-weight: 700;
+        }
+      }
+      > button {
+        font-size: 18px;
+        line-height: 60px;
       }
     }
   }

@@ -15,10 +15,10 @@ async function getData(productNum) {
 
 const page = async ({ params }: { params: { slug: string } }) => {
   const data = await getData(params.slug);
-  
+
   return (
     <>
-      1 <DetailPageNav navList={data.subCategories} />
+      <DetailPageNav navList={data.subCategories.categs} />
       <div>fdafafafdaadfad</div>
     </>
   );

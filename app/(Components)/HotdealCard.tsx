@@ -6,7 +6,7 @@ import ImageWithFallback from "./ImageWithFallback";
 const HotdealCard = ({ itemData }) => {
   return (
     <li key={itemData.productNum}>
-      <a href={`/hotdeal/${itemData.productNum}`}>
+      <a href={`/hotdeal/${itemData.productNum}?categCd=${itemData.categCd}`}>
         <ImageWithFallback
           src={itemData.imgLink}
           width={260}
