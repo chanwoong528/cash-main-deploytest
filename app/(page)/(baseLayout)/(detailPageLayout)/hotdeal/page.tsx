@@ -17,7 +17,7 @@ async function getData(searchParams) {
   const hotDealDetailData = await getDetailList(URL.HOTDEAL, params);
   return {
     subCategories: hotDealDetailData.categ1List,
-    itemList: hotDealDetailData.hotdealList,
+    itemList: hotDealDetailData.hotdealList.contents,
   };
 }
 
