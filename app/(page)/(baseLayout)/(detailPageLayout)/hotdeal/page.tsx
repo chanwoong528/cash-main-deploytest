@@ -23,7 +23,6 @@ async function getData(searchParams) {
 
 const page = async ({ searchParams }) => {
   const data = await getData(searchParams);
-
   return (
     <>
       <DetailPageNav navList={data.subCategories} />
@@ -42,7 +41,7 @@ const page = async ({ searchParams }) => {
         <article className="hotdeal-list-con">
           <ul>
             {data.itemList.map((item) => {
-              return <HotdealCard itemData={item} />;
+              return <HotdealCard key={item.productNum} itemData={item} />;
             })}
           </ul>
         </article>
