@@ -1,7 +1,7 @@
 //@ts-nocheck
 "use client";
-import React, { useEffect, useState } from "react";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import React from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import "../../../styles/components/subNav.scss";
 const DetailPageNav = ({ navList }) => {

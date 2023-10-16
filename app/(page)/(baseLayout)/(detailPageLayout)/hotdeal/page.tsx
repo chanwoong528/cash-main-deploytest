@@ -8,6 +8,7 @@ import HotdealCard from "@/app/(Components)/HotdealCard";
 import { getDetailList } from "@/app/(http)/apis/detailApi";
 import { URL } from "@/app/(util)/CATEGORY";
 import "../../../../../styles/pages/hotDeal.scss";
+import PaginationDefault from "@/app/(Components)/Pagination/PaginationDefault";
 
 async function getData(searchParams) {
   let params = {
@@ -15,9 +16,11 @@ async function getData(searchParams) {
     categCd: searchParams.categCd || null,
   };
   const hotDealDetailData = await getDetailList(URL.HOTDEAL, params);
+
   return {
     subCategories: hotDealDetailData.categ1List,
     itemList: hotDealDetailData.hotdealList.contents,
+    paginationData: hotDealDetailData.hotdealList.pageable,
   };
 }
 
@@ -44,6 +47,7 @@ const page = async ({ searchParams }) => {
               return <HotdealCard key={item.productNum} itemData={item} />;
             })}
           </ul>
+          <PaginationDefault paginationData={data.paginationData} />
         </article>
       </main>
     </>
