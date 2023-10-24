@@ -1,6 +1,17 @@
 //@ts-nocheck
 import http from "../http";
 
+export const getPointShopHome = async () => {
+  const fetchPointshop = await http.get("/pointshop/home", {});
+
+  if (fetchPointshop.code === 200) {
+    let data = await fetchPointshop.data;
+    return data;
+  } else {
+    return { message: "500 error" };
+  }
+};
+
 export const getDetailList = async (urlGubun, params) => {
   const fetchDetailList = await http.get(
     `${urlGubun}/list`,
