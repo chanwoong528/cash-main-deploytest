@@ -15,12 +15,13 @@ async function getData(searchParams) {
   };
   const pointDetailData = await getPointShopHome(URL.POINT, params);
 
-  console.log(pointDetailData.pointshopList);
+  console.log(pointDetailData);
   // return {
   //   subCategories: pointDetailData.categ1List,
   // }
   return {
     subCategories: pointDetailData.categ1List,
+    itemPopulList: pointDetailData.populpointshopList,
     itemListPsConv: pointDetailData.pointshopList.PS_CONV,
     itemListPsFood: pointDetailData.pointshopList.PS_FOOD,
     itemListPsProduct: pointDetailData.pointshopList.PS_PRODUCT,
@@ -46,6 +47,29 @@ const page = async ({ searchParams }) => {
           </h2>
         </header>
         <article className="hotdeal-list-con">
+          <h3>인기브랜드</h3>
+          <ul>
+            <li>
+              {data.itemPopulList.map((item)=>{
+                return <div key={item.brandId}>{item.brandName}</div>
+              })}
+            </li>
+          </ul>
+          <h3>상품권/쿠폰</h3>
+          <ul>
+            <li>
+              {data.itemListPsProduct.map((item)=>{
+                return <div key={item.brandId}>{item.brandName}</div>
+              })}
+            </li>
+          </ul>
+          <h3>편의점?</h3>
+          <ul>
+            <li>
+              
+            </li>
+          </ul>
+          <h3>푸드</h3>
           <ul>
             <li>
               {data.itemListPsFood.map((item)=>{
