@@ -1,0 +1,9 @@
+@use "./_common/_variable";
+
+.best-brand{
+  @include variable.contents__wrap;
+  h3{
+    @include variable.product-list__title;
+  }
+}
+  

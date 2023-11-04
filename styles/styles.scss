@@ -4,10 +4,12 @@
 @use "./components/topNav.scss";
 @use "./components/footer.scss";
 @use "./components/itemTable.scss";
+@use "./components/banner.scss";
 
 @use "./pages/mainPage.scss";
 @use "./pages/authPage.scss";
 @use "./pages/customerPage.scss";
+
 
 * {
   box-sizing: border-box;

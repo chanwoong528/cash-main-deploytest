@@ -2,11 +2,13 @@
 import React from "react";
 import Image from "next/image";
 
+import Banner from "@/app/(Components)/Products/Banner";
 import DetailPageNav from "@/app/(Components)/Nav/DetailPageNav";
+import BestBrand from "@/app/(Components)/Products/BestBrand";
 
 import { getPointShopHome } from "@/app/(http)/apis/detailApi";
 import { URL } from "@/app/(util)/CATEGORY";
-import "../../../../../styles/pages/hotDeal.scss";
+import "../../../../../styles/pages/points.scss";
 
 async function getData(searchParams) {
   let params = {
@@ -15,8 +17,8 @@ async function getData(searchParams) {
   };
   const pointDetailData = await getPointShopHome(URL.POINT, params);
 
-  console.log(pointDetailData);
-  // return {
+  console.log(pointDetailData.pointshopList.PS_FOOD);
+  // return {CONV
   //   subCategories: pointDetailData.categ1List,
   // }
   return {
@@ -31,31 +33,21 @@ async function getData(searchParams) {
 
 const page = async ({ searchParams }) => {
   const data = await getData(searchParams);
+
+  const bannerInfo = {
+    url : "/asset/images/pointshop-banner.png",
+    alt : "MD 추천 잇템!"
+  }
+
   return (
     <>
       <DetailPageNav navList={data.subCategories} />
-      <main className="hotdeal-main">
-        <header className="hotdeal-banner">
-          <h2>
-            <Image
-              src="/asset/images/pointshop-banner.png"
-              objectFit="cover"
-              width={1200}
-              height={240}
-              alt="MD 추천 잇템!"
-            />
-          </h2>
-        </header>
-        <article className="hotdeal-list-con">
-          <h3>인기브랜드</h3>
-          <ul>
-            <li>
-              {data.itemPopulList.map((item)=>{
-                return <div key={item.brandId}>{item.brandName}</div>
-              })}
-            </li>
-          </ul>
-          <h3>상품권/쿠폰</h3>
+      <main className="points-main">
+        <Banner bannerInfo={bannerInfo} />
+        <article className="points-list-con">
+          <BestBrand itemList={data.itemPopulList} />
+          
+          <h3 className="points-title">상품권/쿠폰</h3>
           <ul>
             <li>
               {data.itemListPsProduct.map((item)=>{
@@ -63,17 +55,23 @@ const page = async ({ searchParams }) => {
               })}
             </li>
           </ul>
-          <h3>편의점?</h3>
-          <ul>
-            <li>
-              
-            </li>
-          </ul>
-          <h3>푸드</h3>
+          <h3 className="points-title">편의점</h3>
           <ul>
             <li>
               {data.itemListPsFood.map((item)=>{
-                return <div key={item.brandId}>{item.brandName}</div>
+                if(item.categCd === 'CONV'){
+                  return <div key={item.brandId}>{item.brandName}</div>
+                }
+              })}
+            </li>
+          </ul>
+          <h3 className="points-title">푸드</h3>
+          <ul>
+            <li>
+              {data.itemListPsFood.map((item)=>{
+                if(item.categCd !== 'CONV'){
+                  return <div key={item.brandId}>{item.brandName}</div>
+                }
               })}
             </li>
           </ul>
