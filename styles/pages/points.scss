@@ -1,7 +1,18 @@
-.hotdeal-main {
+.points-main {
   width: 100%;
-  
-  .hotdeal-list-con {
+  .points-banner {
+    width: 100%;
+    h2 {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      background-color: #a491b6;
+      > img {
+        object-fit: cover;
+      }
+    }
+  }
+  .points-list-con {
     display: flex;
     flex-direction: column;
     align-items: center;
