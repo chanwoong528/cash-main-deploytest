@@ -4,11 +4,12 @@ import React from "react";
 import Banner from "@/app/(Components)/Products/Banner";
 import DetailPageNav from "@/app/(Components)/Nav/DetailPageNav";
 import HotdealCard from "@/app/(Components)/HotdealCard";
+import PaginationDefault from "@/app/(Components)/Pagination/PaginationDefault";
 
 import { getDetailList } from "@/app/(http)/apis/detailApi";
 import { URL } from "@/app/(util)/CATEGORY";
+
 import "../../../../../styles/pages/hotDeal.scss";
-import PaginationDefault from "@/app/(Components)/Pagination/PaginationDefault";
 
 async function getData(searchParams) {
   let params = {
@@ -16,24 +17,23 @@ async function getData(searchParams) {
     categCd: searchParams.categCd || null,
   };
   const hotDealDetailData = await getDetailList(URL.HOTDEAL, params);
-
   return {
-    subCategories: hotDealDetailData.categ1List,
-    itemList: hotDealDetailData.hotdealList.contents,
-    paginationData: hotDealDetailData.hotdealList.pageable,
+    subCategories: hotDealDetailData?.categ1List,
+    itemList: hotDealDetailData.hotdealList?.contents,
+    paginationData: hotDealDetailData.hotdealList?.pageable,
   };
 }
+const bannerInfo = {
+  url: "/asset/images/hotdeal-banner.png",
+  alt: "MD 추천 잇템!",
+};
 
 const page = async ({ searchParams }) => {
   const data = await getData(searchParams);
-  const bannerInfo = {
-    url : "/asset/images/hotdeal-banner.png",
-    alt : "MD 추천 잇템!"
-  }
 
   return (
     <>
-      <DetailPageNav navList={data.subCategories} />
+      <DetailPageNav pageType={URL.HOTDEAL} navList={data.subCategories} />
       <main className="hotdeal-main">
         <Banner bannerInfo={bannerInfo} />
         <article className="hotdeal-list-con">

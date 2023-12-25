@@ -4,11 +4,11 @@ import React from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import "../../../styles/components/subNav.scss";
-const DetailPageNav = ({ navList }) => {
+const DetailPageNav = ({ pageType, navList }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const onClickTabBtn = (tableIdx, categCd) => {
-    router.push(`/hotdeal?categCd=${categCd}`);
+    router.push(`${pageType}?categCd=${categCd}`);
     router.refresh();
   };
 

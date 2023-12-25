@@ -8,6 +8,7 @@ import { CATE_LABEL, URL } from "../../(util)/CATEGORY";
 import ShoppingItem from "./TableItem/ShoppingItem";
 import HotDealItem from "./TableItem/HotDealItem";
 import PointItem from "./TableItem/PointItem";
+import TableNav from "./TableNav";
 
 const MainTable = ({ title, content, navData, tableData, tableCate }) => {
   const DEFAULT_TAB = useMemo(() => {
@@ -60,26 +61,12 @@ const MainTable = ({ title, content, navData, tableData, tableCate }) => {
         {content && <p>{content}</p>}
       </header>
       {tableCate !== CATE_LABEL.MERCHANT && (
-        <nav
-          className={`itemtable-nav${
-            tableCate === CATE_LABEL.POINT ? " point-nav" : ""
-          }`}
-        >
-          <ul>
-            {navData.map((navItem, idx) => {
-              return (
-                <li
-                  key={navItem.categCd}
-                  className={curTab === navItem.categCd ? "on" : ""}
-                >
-                  <button onClick={() => onClickNavItem(navItem.categCd)}>
-                    {navItem.title}
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+        <TableNav
+          tableCate={tableCate}
+          navData={navData}
+          onClickNavItem={onClickNavItem}
+          curTab={curTab}
+        />
       )}
       <ul
         className={`table-list${
