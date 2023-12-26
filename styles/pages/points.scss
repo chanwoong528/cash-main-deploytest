@@ -19,6 +19,14 @@
     justify-content: center;
 
     margin: 50px 0;
+
+    .pointshop-table-wrap {
+      width: 100%;
+      &.bg-g {
+        background-color: #f8f8f8;
+      }
+    }
+
     > ul {
       max-width: 1200px;
       display: grid;

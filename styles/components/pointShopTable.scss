@@ -1,0 +1,22 @@
+@use "../_common/variable";
+
+.point-shop-section {
+  @include variable.contents__wrap;
+
+  .point-shop-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 0 30px;
+    h3 {
+      font-size: 24px;
+      font-weight: 700;
+      padding-left: 42px;
+      background: url("/asset/icons/icon_bell.png") no-repeat 0 50%;
+    }
+  }
+
+  .itemtable-nav ul {
+    justify-content: flex-start;
+  }
+}

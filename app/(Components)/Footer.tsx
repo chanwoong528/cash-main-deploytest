@@ -7,27 +7,27 @@ const Footer = () => {
       <nav>
         <ul>
           <li>
-            <Link href="/about" passHref>
+            <Link href={"/about"} passHref>
               캐시나무 소개
             </Link>
           </li>
           <li>
-            <Link href="/faq" passHref>
+            <Link href={"/faq"} passHref>
               FAQ
             </Link>
           </li>
           <li>
-            <Link href="/annoucne" passHref>
+            <Link href={"/annoucne"} passHref>
               공지사항
             </Link>
           </li>
           <li>
-            <Link href="/policy" passHref>
+            <Link href={"/policy"} passHref>
               개인정보처리방침
             </Link>
           </li>
           <li>
-            <Link href="/service" passHref>
+            <Link href={"/service"} passHref>
               이용약관
             </Link>
           </li>
@@ -55,7 +55,7 @@ const Footer = () => {
           <header>
             <h4>고객센터</h4>
           </header>
-          <Link href="/" passHref>
+          <Link href={"/"} passHref>
             카카오톡 문의
           </Link>
           <p>월~금 9:00 ~ 18:00 (주말, 공휴일 휴무)</p>

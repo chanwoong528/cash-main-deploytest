@@ -7,7 +7,6 @@ import ImageWithFallback from "@/app/(Components)/ImageWithFallback";
 
 async function getData(productNum) {
   const [hotdealItem] = await Promise.all([getHotdealItem(productNum)]);
-  console.log(hotdealItem);
 
   return { hotdealItem };
 }

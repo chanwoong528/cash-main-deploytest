@@ -5,7 +5,6 @@ import Image from "next/image";
 
 const Banner = (props) => {
   const { bannerInfo } = props;
-  console.log(bannerInfo)
   return (
     <header className="cn-banner">
       <h2>

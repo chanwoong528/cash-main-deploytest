@@ -21,13 +21,13 @@ const CustomerSideNav = () => {
       <h2>고객센터</h2>
       <ul>
         <li className={`${pathname === "/customer" ? "on" : ""}`}>
-          <Link href="/customer">공지사항</Link>
+          <Link href={"/customer"}>공지사항</Link>
         </li>
         <li className={`${pathname === "/customer/faq" ? "on" : ""}`}>
-          <Link href="/customer/faq">FAQ</Link>
+          <Link href={"/customer/faq"}>FAQ</Link>
         </li>
         <li>
-          <Link href="/">카카오톡 문의</Link>
+          <Link href={"/"}>카카오톡 문의</Link>
         </li>
       </ul>
     </nav>

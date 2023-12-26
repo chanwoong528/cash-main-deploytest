@@ -1,8 +1,6 @@
 //@ts-nocheck
 "use client";
 import React from "react";
-import ImageWithFallback from "../ImageWithFallback";
-import Link from "next/link";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -11,6 +9,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import "../../../styles/components/bestBrand.scss";
+import PointShopItem from "./Item/PointShopItem";
 
 const DefaultItemSlider = ({ title, itemList }) => {
   return (
@@ -27,18 +26,7 @@ const DefaultItemSlider = ({ title, itemList }) => {
         {itemList.map((item) => {
           return (
             <SwiperSlide key={item.brandId}>
-              <Link href={""}>
-                <div className="default-slider-card">
-                  <ImageWithFallback
-                    src={item.imgLink}
-                    width={207}
-                    height={110}
-                    objectFit="contain"
-                    alt={item.brandName}
-                  />
-                  <p className="brand-title">{item.brandName}</p>
-                </div>
-              </Link>
+              <PointShopItem item={item} />
             </SwiperSlide>
           );
         })}

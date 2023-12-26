@@ -3,13 +3,36 @@
 import React from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
+import { URL } from "@/app/(util)/CATEGORY";
+
 import "../../../styles/components/subNav.scss";
+
 const DetailPageNav = ({ pageType, navList }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
+
   const onClickTabBtn = (tableIdx, categCd) => {
-    router.push(`${pageType}?categCd=${categCd}`);
-    router.refresh();
+    if (pageType === URL.POINT) {
+      router.push(`${pageType}/${categCd}?categCd=${categCd}`);
+      return router.refresh();
+    }
+    console.log(categCd);
+    router.push(`${pageType}?categCd=${!!categCd ? categCd : ""}`);
+    return router.refresh();
+  };
+
+  const renderActiveClassName = (item, idx) => {
+    switch (pageType) {
+      // case URL.POINT:
+      //   console.log(idx, pathname.split("/"));
+      //   return idx === 0 ? " on" : pathname.includes(item.categCd) ? " on" : "";
+      default:
+        return !searchParams.get("categCd") && idx === 0
+          ? " on"
+          : searchParams.get("categCd") === item.categCd
+          ? " on"
+          : "";
+    }
   };
 
   return (
@@ -17,16 +40,7 @@ const DetailPageNav = ({ pageType, navList }) => {
       <ul>
         {navList.map((item, idx) => {
           return (
-            <li
-              key={item.categCd}
-              className={
-                !searchParams.get("categCd") && idx === 0
-                  ? " on"
-                  : searchParams.get("categCd") === item.categCd
-                  ? " on"
-                  : ""
-              }
-            >
+            <li key={item.categCd} className={renderActiveClassName(item, idx)}>
               <button onClick={() => onClickTabBtn(idx + 1, item.categCd)}>
                 {item.title}
               </button>

@@ -22,7 +22,9 @@ const PaginationDefault = ({ paginationData }) => {
     if (pageNumber > 0 && pageNumber <= pageSize) {
       setCurrentPage(pageNumber);
       router.push(
-        `/hotdeal?categCd=${searchParams.get("categCd")}&cpage=${pageNumber}`
+        `/hotdeal?categCd=${
+          searchParams.get("categCd") ? searchParams.get("categCd") : ""
+        }&cpage=${pageNumber}`
       );
       router.refresh();
     }

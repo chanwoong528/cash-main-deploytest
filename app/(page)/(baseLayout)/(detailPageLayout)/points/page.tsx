@@ -2,13 +2,15 @@
 import React from "react";
 
 import Banner from "@/app/(Components)/Products/Banner";
-import DetailPageNav from "@/app/(Components)/Nav/DetailPageNav";
-import BestBrand from "@/app/(Components)/Products/BestBrand";
+
+import DefaultItemSlider from "@/app/(Components)/Slider/DefaultItemSlider";
+import PointShopTable from "@/app/(Components)/ItemTable/PointShopTable";
 
 import { getPointShopHome } from "@/app/(http)/apis/detailApi";
-import { URL } from "@/app/(util)/CATEGORY";
+
+import { POINTSHOP_LIST_TYPE, URL } from "@/app/(util)/CATEGORY";
+
 import "../../../../../styles/pages/points.scss";
-import DefaultItemSlider from "@/app/(Components)/Slider/DefaultItemSlider";
 
 async function getData(searchParams) {
   let params = {
@@ -17,18 +19,13 @@ async function getData(searchParams) {
   };
   const pointDetailData = await getPointShopHome(URL.POINT, params);
 
-  // console.log(pointDetailData.pointshopList.PS_FOOD);
-  // return {CONV
-  //   subCategories: pointDetailData.categ1List,
-  // }
-  console.log("!! ", pointDetailData.categ2List);
-
   return {
     subCategories: pointDetailData.categ1List,
     itemPopulList: pointDetailData.populpointshopList,
     itemListPsConv: pointDetailData.pointshopList.PS_CONV,
     itemListPsFood: pointDetailData.pointshopList.PS_FOOD,
     itemListPsProduct: pointDetailData.pointshopList.PS_PRODUCT,
+    foodNavList: pointDetailData.categ2List.PS_FOOD,
   };
 }
 const bannerInfo = {
@@ -38,10 +35,8 @@ const bannerInfo = {
 
 const page = async ({ searchParams }) => {
   const data = await getData(searchParams);
-
   return (
     <>
-      <DetailPageNav pageType={URL.POINT} navList={data.subCategories} />
       <main className="points-main">
         <Banner bannerInfo={bannerInfo} />
         <article className="points-list-con">
@@ -49,35 +44,20 @@ const page = async ({ searchParams }) => {
             title={"인기브랜드"}
             itemList={data.itemPopulList}
           />
-
-          <h3 className="points-title">상품권/쿠폰</h3>
-          <ul>
-            <li>
-              {data.itemListPsProduct.map((item) => {
-                return <div key={item.brandId}>{item.brandName}</div>;
-              })}
-            </li>
-          </ul>
-          <h3 className="points-title">편의점</h3>
-          <ul>
-            <li>
-              {data.itemListPsFood.map((item) => {
-                if (item.categCd === "CONV") {
-                  return <div key={item.brandId}>{item.brandName}</div>;
-                }
-              })}
-            </li>
-          </ul>
-          <h3 className="points-title">푸드</h3>
-          <ul>
-            <li>
-              {data.itemListPsFood.map((item) => {
-                if (item.categCd !== "CONV") {
-                  return <div key={item.brandId}>{item.brandName}</div>;
-                }
-              })}
-            </li>
-          </ul>
+          <div className="pointshop-table-wrap">
+            <PointShopTable title="상품권/쿠폰" data={data.itemListPsProduct} />
+          </div>
+          <div className="pointshop-table-wrap bg-g">
+            <PointShopTable title="편의점" data={data.itemListPsConv} />
+          </div>
+          <div className="pointshop-table-wrap">
+            <PointShopTable
+              type={POINTSHOP_LIST_TYPE.WITH_NAV}
+              title="푸드"
+              data={data.itemListPsFood}
+              navData={data.foodNavList}
+            />
+          </div>
         </article>
       </main>
     </>
