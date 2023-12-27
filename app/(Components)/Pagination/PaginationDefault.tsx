@@ -1,7 +1,7 @@
 //@ts-nocheck
 "use client";
 import React, { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import "../../../styles/components/pagination.scss";
 
 const PaginationDefault = ({ paginationData }) => {
@@ -9,6 +9,7 @@ const PaginationDefault = ({ paginationData }) => {
   const [currentPage, setCurrentPage] = useState(pageNumber + 1);
   const router = useRouter();
   const searchParams = useSearchParams();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (paged) {
@@ -22,7 +23,7 @@ const PaginationDefault = ({ paginationData }) => {
     if (pageNumber > 0 && pageNumber <= pageSize) {
       setCurrentPage(pageNumber);
       router.push(
-        `/hotdeal?categCd=${
+        `${pathname}?categCd=${
           searchParams.get("categCd") ? searchParams.get("categCd") : ""
         }&cpage=${pageNumber}`
       );

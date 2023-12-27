@@ -3,8 +3,8 @@ import React from "react";
 
 import Banner from "@/app/(Components)/Products/Banner";
 import DetailPageNav from "@/app/(Components)/Nav/DetailPageNav";
-import HotdealCard from "@/app/(Components)/HotdealCard";
 import PaginationDefault from "@/app/(Components)/Pagination/PaginationDefault";
+import HotDealItem from "@/app/(Components)/ItemTable/TableItem/HotDealItem";
 
 import { getDetailList } from "@/app/(http)/apis/detailApi";
 import { URL } from "@/app/(util)/CATEGORY";
@@ -39,7 +39,8 @@ const page = async ({ searchParams }) => {
         <article className="hotdeal-list-con">
           <ul>
             {data.itemList.map((item) => {
-              return <HotdealCard key={item.productNum} itemData={item} />;
+              return <HotDealItem key={item.productNum} itemData={item} />;
+              // <HotdealCard key={item.productNum} itemData={item} />;
             })}
           </ul>
           <PaginationDefault paginationData={data.paginationData} />

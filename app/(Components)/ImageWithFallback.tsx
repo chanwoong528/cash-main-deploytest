@@ -22,10 +22,12 @@ const ImageWithFallback = ({
     <Image
       onError={setError}
       loader={loaderProp}
+      unoptimized={true}
       src={error ? fallbackSrc : src}
       width={width}
       height={height}
-      objectFit={objectFit}
+      // objectFit={objectFit}
+      style={{ objectFit: objectFit }}
       alt={alt}
     />
   );

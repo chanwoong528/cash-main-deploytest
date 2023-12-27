@@ -4,17 +4,21 @@ import React from "react";
 import Link from "next/link";
 import ImageWithFallback from "../../ImageWithFallback";
 
+import "../../../../styles/components/hotDealItem.scss";
+
 const HotDealItem = ({ itemData }) => {
+  
   return (
-    <li key={itemData.brandId}>
+    <li key={itemData?.brandId} className="hotdeal-item">
       <Link href={`/hotdeal/${itemData.productName}`}>
         <div className="image-box">
           <ImageWithFallback
-            src={itemData.image}
+            // src={itemData.image}
+            src={!!itemData.image ? itemData.image : itemData.imgLink}
             width={260}
             height={260}
             objectFit="contain"
-            alt={itemData.title}
+            alt={!!itemData.title ? itemData.title : itemData.name}
           />
         </div>
         <h3>{itemData.name}</h3>
@@ -22,15 +26,15 @@ const HotDealItem = ({ itemData }) => {
           <var className="percent">{`${itemData.sale}`}%</var>
           <div className="price-box">
             <var className="op">
-              {`${itemData.listPrice
-                .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
+              {`${Number(
+                !!itemData.listPrice ? itemData.listPrice : itemData.originPrice
+              ).toLocaleString()}`}
               <abbr>원</abbr>
             </var>
             <var className="cp">
-              {`${itemData.price
-                .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
+              {`${Number(
+                !!itemData.price ? itemData.price : itemData.salePrice
+              ).toLocaleString()}`}
               <abbr>원</abbr>
             </var>
           </div>
