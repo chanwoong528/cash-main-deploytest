@@ -6,9 +6,9 @@ import ImageWithFallback from "../../ImageWithFallback";
 import "./PointItem.scss";
 
 
-const PointItem = ({ itemData }) => {
+const PointItem = ({ itemData, psType }) => {
   return (
-    <li className="card-item ps-item" key={itemData.brandId}>
+    <li className={`card-item ps-item ${psType}`} key={itemData.brandId}>
       <a href={""}>
         <div className="image-box">
           <ImageWithFallback
@@ -16,7 +16,7 @@ const PointItem = ({ itemData }) => {
               itemData.image :
               `https://${itemData.image}`}
             width={120}
-            height={120}
+            height={!!psType ? 60 : 120}
             alt={itemData.brandName}
             style={{
               maxWidth: "100%",

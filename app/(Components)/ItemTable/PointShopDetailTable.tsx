@@ -51,8 +51,8 @@ const PointShopDetailTable = ({ tableData }) => {
   return (
     <div className="ps-detail-table">
       <ul className="ps-list">
-        {demoPsData.map(item =>
-          <PointItem itemData={item} />
+        {demoPsData.map((item, idx) =>
+          <PointItem key={item.brandId + idx} itemData={item} psType={"ps-detail-item"} />
         )}
       </ul>
       <PaginationDefault paginationData={paginationData} />

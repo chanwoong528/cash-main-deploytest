@@ -7,10 +7,9 @@ import ImageWithFallback from "../../ImageWithFallback";
 import "../../../../styles/components/hotDealItem.scss";
 
 const HotDealItem = ({ itemData }) => {
-  
   return (
     <li key={itemData?.brandId} className="hotdeal-item">
-      <Link href={`/hotdeal/${itemData.productName}`}>
+      <Link href={`/hotdeal/${itemData.productNum}`}>
         <div className="image-box">
           <ImageWithFallback
             // src={itemData.image}

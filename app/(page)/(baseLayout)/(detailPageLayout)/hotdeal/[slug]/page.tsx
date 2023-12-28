@@ -15,26 +15,27 @@ const page = async ({ params }: { params: { slug: string } }) => {
   const data = await getData(params.slug);
 
   return (
+
     <>
       <DetailPageNav navList={data.hotdealItem.categ1List} />
       <section>
         <figure>
           <ImageWithFallback
-            src={data.hotdealItem.hotdealDTO.image}
+            src={data.hotdealItem.hotdealDTO?.image}
             width={450}
             height={450}
             objectFit="contain"
-            alt={data.hotdealItem.hotdealDTO.name}
+            alt={data.hotdealItem.hotdealDTO?.name}
           />
         </figure>
         <header>
-          <h2>{data.hotdealItem.hotdealDTO.name}</h2>
+          <h2>{data.hotdealItem.hotdealDTO?.name}</h2>
           <div>
             <div>
-              <p>{data.hotdealItem.hotdealDTO.sale}%</p>
-              <p>{data.hotdealItem.hotdealDTO.price}원</p>
+              <p>{data.hotdealItem.hotdealDTO?.sale}%</p>
+              <p>{data.hotdealItem.hotdealDTO?.price}원</p>
             </div>
-            <p>{data.hotdealItem.hotdealDTO.listPrice}원</p>
+            <p>{data.hotdealItem.hotdealDTO?.listPrice}원</p>
           </div>
         </header>
         <button>구매하기</button>
@@ -45,7 +46,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
             <h4>상품상세정보</h4>
             <div
               dangerouslySetInnerHTML={{
-                __html: data.hotdealItem.hotdealDTO.detailInfo,
+                __html: data.hotdealItem.hotdealDTO?.detailInfo,
               }}
             ></div>
           </div>
