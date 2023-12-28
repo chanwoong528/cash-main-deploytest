@@ -15,8 +15,5 @@
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(5, 1fr);
-    li {
-      border: 1px solid blue;
-    }
   }
 }

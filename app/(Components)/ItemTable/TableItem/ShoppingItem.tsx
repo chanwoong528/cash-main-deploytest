@@ -2,9 +2,11 @@
 import React from "react";
 import ImageWithFallback from "../../ImageWithFallback";
 
+import "./ShoppingItem.scss";
+
 const ShoppingItem = ({ itemData }) => {
   return (
-    <li key={itemData.merchantId}>
+    <li className="card-item shopping-item" key={itemData.merchantId}>
       <a href="">
         <div className="image-box">
           <ImageWithFallback

@@ -13,10 +13,13 @@ const DetailPageNav = ({ pageType, navList }) => {
 
   const onClickTabBtn = (tableIdx, categCd) => {
     if (pageType === URL.POINT) {
-      router.push(`${pageType}/${categCd}?categCd=${categCd}`);
+      if (!categCd) {
+        router.push(`${pageType}`);
+        return router.refresh();
+      }
+      router.push(`${pageType}/point_detail?categCd=${categCd}`);
       return router.refresh();
     }
-    console.log(categCd);
     router.push(`${pageType}?categCd=${!!categCd ? categCd : ""}`);
     return router.refresh();
   };
@@ -30,8 +33,8 @@ const DetailPageNav = ({ pageType, navList }) => {
         return !searchParams.get("categCd") && idx === 0
           ? " on"
           : searchParams.get("categCd") === item.categCd
-          ? " on"
-          : "";
+            ? " on"
+            : "";
     }
   };
 

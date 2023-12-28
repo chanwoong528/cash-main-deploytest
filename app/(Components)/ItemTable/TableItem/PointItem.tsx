@@ -3,13 +3,18 @@
 import React from "react";
 import ImageWithFallback from "../../ImageWithFallback";
 
+import "./PointItem.scss";
+
+
 const PointItem = ({ itemData }) => {
   return (
-    <li key={itemData.brandId}>
-      <a href="">
+    <li className="card-item ps-item" key={itemData.brandId}>
+      <a href={""}>
         <div className="image-box">
           <ImageWithFallback
-            src={`https://${itemData.image}`}
+            src={itemData.image.includes('https://') ?
+              itemData.image :
+              `https://${itemData.image}`}
             width={120}
             height={120}
             alt={itemData.brandName}

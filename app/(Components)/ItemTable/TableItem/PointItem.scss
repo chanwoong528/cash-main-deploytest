@@ -1,0 +1,17 @@
+.ps-item {
+  width: 100%;
+  border: none;
+  margin: 10px 10px 50px 10px;
+
+  .image-box {
+    margin-top: 0;
+    width: 198px;
+    // height: 120px;
+    padding: 60px 0;
+    border-radius: 10px;
+    border: solid 1px #e1e1e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
