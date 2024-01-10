@@ -48,7 +48,7 @@ const PaginationDefault = ({ paginationData }) => {
               key={pageNumber}
               className={pageNumber === currentPage ? "on" : ""}
             >
-              <button onClick={() => onClickPageNum(pageNumber)}>
+              <button type="button" onClick={() => onClickPageNum(pageNumber)}>
                 {pageNumber}
               </button>
             </li>
@@ -61,38 +61,46 @@ const PaginationDefault = ({ paginationData }) => {
   return (
     <nav className="pagination-con">
       <button
+        className="paginate_btn paginate_btn-first"
         disabled={currentPage === 1}
+        type="button"
         onClick={() => {
           onClickPageNum(1);
         }}
       >
-        {"<< ||"}
+        Go to first page
       </button>
       <button
+        className="paginate_btn paginate_btn-prev"
         disabled={currentPage === 1}
+        type="button"
         onClick={() => {
           onClickPageNum(currentPage - 1);
         }}
       >
-        {"<"}
+        Go to prev page
       </button>
       {pageSize > 1 && renderPagination()}
 
       <button
+        className="paginate_btn paginate_btn-next"
         disabled={currentPage === pageSize}
+        type="button"
         onClick={() => {
           onClickPageNum(currentPage + 1);
         }}
       >
-        {">"}
+        Go to next page
       </button>
       <button
+        className="paginate_btn paginate_btn-last"
         disabled={currentPage === pageSize}
+        type="button"
         onClick={() => {
           onClickPageNum(pageSize);
         }}
       >
-        {"|| >>"}
+        Go to last page
       </button>
     </nav>
   );
