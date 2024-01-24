@@ -1,10 +1,8 @@
 //@ts-nocheck
-// "use client";
-// import React, { useState } from "react";
 import React from "react";
-import { getCategories, getHotdealItem } from "@/app/(http)/apis/detailApi";
-import { CATE_LABEL } from "@/app/(util)/CATEGORY";
+import { getHotdealItem, getHotdealOthers } from "@/app/(http)/apis/detailApi";
 import DetailPageNav from "@/app/(Components)/Nav/DetailPageNav";
+import HotdealDetail from "@/app/(Components)/Products/HotdealDetail";
 import ImageWithFallback from "@/app/(Components)/ImageWithFallback";
 
 import "../../../../../../styles/components/hotDealDetail.scss";
@@ -16,9 +14,16 @@ async function getData(productNum) {
 }
 
 const page = async ({ params }: { params: { slug: string } }) => {
-  // const [showPrdInfomation, setShowPrdInfomation] = useState(false); // product moreInfomation
   const data = await getData(params.slug);
-  console.log(data.hotdealItem);
+  console.log(data)
+  console.log(data.hotdealItem.hotdealDTO.categoryDescDTO.categCd)
+  if(data){
+    const categCd = data.hotdealItem.hotdealDTO.categoryDescDTO.categCd;
+    console.log(categCd)
+    const othersData = await getHotdealOthers(categCd);
+    console.log(othersData)
+  }
+  
   
   if(data.hotdealItem === null){
     data.hotdealItem.categ1List = [];
@@ -51,43 +56,8 @@ const page = async ({ params }: { params: { slug: string } }) => {
             )}
           </div>
         </header>
+        <HotdealDetail detailInfo={data.hotdealItem.hotdealDTO?.detailInfo} />
         <button className="btn-primary">구매하기</button>
-        <article className="prd-detail">
-          <h3>상세정보</h3>
-          <div>
-            {/* <h4>상품안내</h4>
-            <h4>상품상세정보</h4> */}
-            <div
-              dangerouslySetInnerHTML={{
-                __html: data.hotdealItem.hotdealDTO?.detailInfo,
-              }}
-              className="prd-img hidden"
-            ></div>
-            <div class="btn_wrap">
-              <button 
-                type="button"
-                >
-                  자세히보기
-                </button>
-            </div>
-            {/* <div
-              dangerouslySetInnerHTML={{
-                __html: data.hotdealItem.hotdealDTO?.detailInfo,
-              }}
-              className={"prd-img" + (showPrdInfomation ? '' : ' hidden') }
-            ></div>
-            {showPrdInfomation && (
-              <div class="btn_wrap">
-                <button 
-                  type="button"
-                  onClick={setShowPrdInfomation(true)}
-                  >
-                    자세히보기
-                  </button>
-              </div>
-            )} */}
-          </div>
-        </article>
       </section>
     </>
   );
