@@ -136,3 +136,115 @@
     }
   }
 }
+
+@media (min-width: 900px) {
+  .hotdeal-detail {
+    display:flex;
+    flex-wrap: wrap;
+    max-width: 1080px;
+    margin:0 auto;
+
+    figure{  
+      width: 100%;
+      max-width: 450px;
+      height: 450px;
+    }
+
+    header{
+      position: relative;
+      width: 100%;
+      max-width: calc( 100% - 510px );
+      margin-left: 60px;
+      padding-bottom:75px;
+  
+      $info-fontSize: 28px;
+  
+      &>div{
+        border-top: 1px solid #e3e3e3;
+        border-bottom: 1px solid #e3e3e3;
+        padding: 40px 0 20px 0;
+      }
+      
+      h2{
+        font-size: $info-fontSize;
+        line-height: 1.5;
+      }
+  
+      .price-box{
+        font-size: $info-fontSize;
+        margin-top: 30px;
+  
+        p{
+          display: inline-block;
+  
+          em{
+            font-size: 1.5em;
+            color: inherit;
+          }
+        }
+        
+        &>div{
+          padding-bottom: 20px;
+        }
+
+        .percent{
+          line-height: 1.5;
+        }
+  
+        .price-current{
+          margin-left: 10px;
+        }
+  
+        .price-org{
+          margin-top:20px;
+  
+          del{
+            font-size: $info-fontSize;
+          }
+        }
+      }
+    }
+  
+    .btn-primary{
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 65px;
+      font-size: 24px;
+      line-height: 41px;
+    }
+  
+    .prd-detail{
+      width: 100%;
+      padding-bottom: 60px;
+      margin-top: 50px;
+      border-top: 0;
+      border-bottom: 0;
+  
+      >h3{
+        font-size: 26px;
+        font-weight: 500;
+        padding: 0 0 20px;
+        border-top: 0;
+        line-height: 1.2;
+        border-bottom: 2px solid #000;
+        margin-bottom: 60px;
+        text-align: left;
+      }
+  
+      .prd-img + .btn_wrap{
+        max-width: 540px;
+        padding: 50px 0;
+        margin:0 auto;
+
+        button{
+          padding: 0px 12px;
+          border-radius: 32px;
+          font-size: 24px;
+          line-height: 1.2;
+          line-height: 64px;
+        }
+      }
+    }
+  }
+}

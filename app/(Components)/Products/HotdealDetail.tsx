@@ -22,7 +22,7 @@ const HotdealDetail = (props) => {
               type="button"
               onClick={ () => setShowPrdInfomation(true) }
               >
-                자세히보기
+                상품 상세 보기
               </button>
           </div>
         ) }

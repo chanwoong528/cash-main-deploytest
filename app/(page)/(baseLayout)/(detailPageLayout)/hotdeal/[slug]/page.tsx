@@ -43,21 +43,23 @@ const page = async ({ params }: { params: { slug: string } }) => {
           />
         </figure>
         <header>
-          <h2>{data.hotdealItem.hotdealDTO?.name}</h2>
-          <div className="price-box">
-            <div>
-              {data.hotdealItem.hotdealDTO?.sale && (
-                <p className="percent"><em>{data.hotdealItem.hotdealDTO?.sale}</em>%</p>
+          <div>
+            <h2>{data.hotdealItem.hotdealDTO?.name}</h2>
+            <div className="price-box">
+              <div>
+                {data.hotdealItem.hotdealDTO?.sale && (
+                  <p className="percent"><em>{data.hotdealItem.hotdealDTO?.sale}</em>%</p>
+                )}
+                <p className="price-current"><em>{data.hotdealItem.hotdealDTO?.price}</em>원</p>
+              </div>
+              {data.hotdealItem.hotdealDTO?.listPrice && (
+                <p className="price-org"><del>{data.hotdealItem.hotdealDTO.listPrice}</del>원</p>
               )}
-              <p className="price-current"><em>{data.hotdealItem.hotdealDTO?.price}</em>원</p>
             </div>
-            {data.hotdealItem.hotdealDTO?.listPrice && (
-              <p className="price-org"><del>{data.hotdealItem.hotdealDTO.listPrice}</del>원</p>
-            )}
           </div>
+          <button className="btn-primary">구매하기</button>
         </header>
         <HotdealDetail detailInfo={data.hotdealItem.hotdealDTO?.detailInfo} />
-        <button className="btn-primary">구매하기</button>
       </section>
     </>
   );
