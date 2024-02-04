@@ -51,3 +51,16 @@ export const getHotdealItem = async (productNum) => {
     return { message: "500 error" };
   }
 };
+
+export const getHotdealOthers = async (categCd) => {
+  const fetchHotdealOthers = await http.get(`/hotdeal/others`, {
+    params: { categCd : categCd },
+  });
+  console.log("!!! fet", fetchHotdealOthers);
+  if (fetchHotdealOthers.code === 200) {
+    let data = await fetchHotdealOthers.data;
+    return data;
+  } else {
+    return { message: "500 error" };
+  }
+};
