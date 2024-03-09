@@ -41,6 +41,7 @@ const page = async ({ searchParams }) => {
         <Banner bannerInfo={bannerInfo} />
         <article className="points-list-con">
           <DefaultItemSlider
+            callPage={"bestBrand"}
             title={"인기브랜드"}
             itemList={data.itemPopulList}
           />

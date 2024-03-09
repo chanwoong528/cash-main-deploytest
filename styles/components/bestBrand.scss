@@ -1,11 +1,6 @@
 @use "./_common/_variable";
 
-.best-brand {
-  @include variable.contents__wrap;
-
-  h3 {
-    @include variable.product-list__title;
-  }
+.bestBrand {
 
   .default-slider {
     margin-top: 30px;
@@ -14,7 +9,7 @@
     border-radius: 10px;
     background-color: #f1f1f1;
 
-    .default-slider-card {
+    .brand-slider-card {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -33,20 +28,6 @@
       .brand-title {
         padding-bottom: 25px;
       }
-    }
-  }
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    width: 60px;
-    height: 60px;
-
-    background-color: #fff;
-    border-radius: 50%;
-    border: solid 1px #e1e1e1;
-
-    &::after {
-      font-size: 24px;
     }
   }
 }

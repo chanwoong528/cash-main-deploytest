@@ -26,9 +26,6 @@ const DetailPageNav = ({ pageType, navList }) => {
 
   const renderActiveClassName = (item, idx) => {
     switch (pageType) {
-      // case URL.POINT:
-      //   console.log(idx, pathname.split("/"));
-      //   return idx === 0 ? " on" : pathname.includes(item.categCd) ? " on" : "";
       default:
         return !searchParams.get("categCd") && idx === 0
           ? " on"

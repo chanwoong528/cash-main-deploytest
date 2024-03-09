@@ -23,7 +23,7 @@ const MainTable = ({ title, content, navData, tableData, tableCate }) => {
   }, []);
   const [curTab, setCurTab] = useState(DEFAULT_TAB);
   const [filteredList, setFilteredList] = useState([
-    ...tableData.filter((item, idx) => item.mainCateg.includes(DEFAULT_TAB)),
+    ...tableData?.filter((item, idx) => item.mainCateg.includes(DEFAULT_TAB)),
   ]);
   const renderItem = useCallback((tableCate, data) => {
     switch (tableCate) {
