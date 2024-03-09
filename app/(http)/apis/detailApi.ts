@@ -43,7 +43,6 @@ export const getHotdealItem = async (productNum) => {
   const fetchHotdealDetail = await http.get(`/hotdeal/view`, {
     params: { productNum: productNum },
   });
-  // console.log("!!! fet", fetchHotdealDetail);
   if (fetchHotdealDetail.code === 200) {
     let data = await fetchHotdealDetail.data;
     return data;
@@ -56,10 +55,20 @@ export const getHotdealOthers = async (categCd) => {
   const fetchHotdealOthers = await http.get(`/hotdeal/others`, {
     params: { categCd : categCd },
   });
-  console.log("!!! fet", fetchHotdealOthers);
   if (fetchHotdealOthers.code === 200) {
     let data = await fetchHotdealOthers.data;
-    return data;
+    const results = data.hotdealList?.map((el) => {
+      return {
+        productNum: el.productNum,
+        name: el.name,
+        categCd: categCd,
+        originPrice: el.listPrice,
+        salePrice: el.price,
+        imgLink: el.image,
+        sale: Number(el.sale)
+      }
+    })
+    return results.slice(0,10);
   } else {
     return { message: "500 error" };
   }

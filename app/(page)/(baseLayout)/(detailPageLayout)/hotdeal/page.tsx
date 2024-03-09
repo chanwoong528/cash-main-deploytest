@@ -38,7 +38,7 @@ const page = async ({ searchParams }) => {
         <Banner bannerInfo={bannerInfo} />
         <article className="hotdeal-list-con">
           <ul>
-            {data.itemList.map((item) => {
+            {data.itemList?.map((item) => {
               return <HotDealItem key={item.productNum} itemData={item} />;
               // <HotdealCard key={item.productNum} itemData={item} />;
             })}

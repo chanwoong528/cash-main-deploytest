@@ -5,7 +5,7 @@ import React, { useState } from "react";
 const HotdealDetail = (props) => {
   const { detailInfo } = props;
   const [showPrdInfomation, setShowPrdInfomation] = useState(false); // product moreInfomation
-  
+
   return (
     <article className="prd-detail">
       <h3>상세정보</h3>
@@ -17,7 +17,7 @@ const HotdealDetail = (props) => {
           className={"prd-img" + (showPrdInfomation ? '' : ' hidden') }
         ></div>
         {!(showPrdInfomation) && (
-          <div class="btn_wrap">
+          <div className="btn_wrap">
             <button 
               type="button"
               onClick={ () => setShowPrdInfomation(true) }

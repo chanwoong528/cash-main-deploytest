@@ -8,13 +8,16 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
+import "../../../styles/components/defaultSlider.scss";
 import "../../../styles/components/bestBrand.scss";
-import PointShopItem from "./Item/PointShopItem";
+import "../../../styles/components/hotdealothers.scss";
 
-const DefaultItemSlider = ({ title, itemList }) => {
-  return (
-    <div className="best-brand">
-      <h3>{title}</h3>
+import PointShopItem from "./Item/PointShopItem";
+import HotDealItem from "./Item/HotDealItem";
+
+const ComponentType = ({ itemList, callPage }) => {
+  if(callPage === "bestBrand"){
+    return (
       <Swiper
         slidesPerView={4.5}
         spaceBetween={30}
@@ -31,10 +34,41 @@ const DefaultItemSlider = ({ title, itemList }) => {
           );
         })}
       </Swiper>
+    )
+  }
+  
+  if(callPage === "hotdeal"){
+    return (
+      <Swiper
+        slidesPerView={2}
+        spaceBetween={30}
+        freeMode={true}
+        navigation={true}
+        modules={[Navigation]}
+        className="default-slider"
+        breakpoints={{
+          900:{
+            slidesPerView:4
+          }          
+        }}
+      >
+        {itemList.map((item) => {
+          return (
+            <SwiperSlide key={item.productNum}>
+              <HotDealItem item={item} />
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    )
+  }
+}
 
-      {/* <ul> */}
-
-      {/* </ul> */}
+const DefaultItemSlider = ({ title, itemList, callPage }) => {
+  return (
+    <div className={`defaultSlider ${callPage}`}>
+      <h3>{title}</h3>
+      <ComponentType itemList={itemList} callPage={callPage} />
     </div>
   );
 };

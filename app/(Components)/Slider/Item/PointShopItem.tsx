@@ -11,7 +11,7 @@ import ImageWithFallback from "../../ImageWithFallback";
 const PointShopItem = ({ item }) => {
   return (
     <Link href={"/"}>
-      <div className="default-slider-card">
+      <div className="brand-slider-card">
         <ImageWithFallback
           src={item.imgLink}
           width={207}

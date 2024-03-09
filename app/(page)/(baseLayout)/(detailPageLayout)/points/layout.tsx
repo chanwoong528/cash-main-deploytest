@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 import DetailPageNav from "@/app/(Components)/Nav/DetailPageNav";
 import { URL } from "@/app/(util)/CATEGORY";
-// import { getNavCategory } from "@/app/(http)/apis/navCategory";
+import { getNavCategory } from "@/app/(http)/apis/navCategory";
 import { getPointShopHome } from "@/app/(http)/apis/detailApi";
 
 export const metadata: Metadata = {
