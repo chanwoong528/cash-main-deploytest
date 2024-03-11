@@ -10,17 +10,17 @@
     width: 100%;
     max-width: 1200px;
     li {
-      height: 100%;
+      padding:13px 0;
       &.on {
-        border-bottom: 1px solid #0071e3;
         > button {
           color: #0071e3;
           font-weight: 700;
+          border-bottom: 1px solid #0071e3;
         }
       }
       > button {
         font-size: 18px;
-        line-height: 60px;
+        line-height: 34px;
       }
     }
   }

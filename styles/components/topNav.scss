@@ -1,11 +1,18 @@
 .main-nav {
+  position: fixed;
+  top:0;
+  left:0;
   width: 100%;
-  max-width: 1200px;
+  max-width: 100vw;
   margin: 0 auto;
+  padding: 8px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 110px;
+  height: 63px;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  z-index: 500;
 
   //캐시나무 로고 & search bar
   .left-nav {
@@ -15,9 +22,8 @@
 
     h1 {
       //캐시나무 로고 img
-      cursor: pointer;
-      width: 230px;
-      height: 45px;
+      width: 137px;
+      height: 27px;
 
       display: flex;
       justify-content: center;
@@ -29,7 +35,7 @@
     }
 
     .search-container {
-      display: flex;
+      display:none;
       flex-direction: column;
       align-items: center;
       justify-content: center;
@@ -119,14 +125,27 @@
       line-height: 26px;
     }
 
-    &:first-of-type::after {
-      content: "|";
-      flex-shrink: 0;
-      font-size: 14px;
-      color: #cccccc;
-      letter-spacing: -0.35px;
-      line-height: 26px;
-      margin-left: 14px;
+    &:first-of-type{
+      a{
+        position: relative;
+        z-index: 2;
+        padding: 0;
+        font-size: 14px;
+        font-weight: 700;
+        color: #000;
+        letter-spacing: -.7px;
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          z-index: -1;
+          width: 100%;
+          height: 4px;
+          border-radius: 4px;
+          background: #ffde43;
+        }
+      }
     }
   }
 }
@@ -217,61 +236,221 @@
   }
 }
 .nav-cate {
-  border-top: 1px solid #e1e1e1;
-  border-bottom: 1px solid #e1e1e1;
-  width: 100%;
-  .nav-con {
+  display:none;
+
+  & + main {
+    position: relative;
+    max-width: 100vw;
+    height: auto;
+    padding-top:50px;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 900px) {
+  .main-nav {
+    position: relative;
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 60px;
-
-    .cate-list {
-      display: flex;
-      height: 100%;
-
-      & > li {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        white-space: nowrap;
-        margin-right: 70px;
-        font-size: 18px;
-        font-weight: 500;
-        line-height: 1.44;
-        letter-spacing: -0.45px;
-        text-align: left;
-
+    padding: 0;
+    height: 90px;
+    border-bottom: 0;
+  
+    //캐시나무 로고 & search bar
+    .left-nav {
+      h1 {
+        width: 230px;
+        height: 45px;
+  
         a {
-          color: #1d1d1d;
+          width: inherit;
+          padding-top: 7px;
         }
-
-        &:hover {
-          a {
-            color: blue;
+      }
+  
+      .search-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+  
+        min-width: 343px;
+        width: 100%;
+        height: 40px;
+        margin-left: 40px;
+        position: relative;
+  
+        //search bar
+        input {
+          min-width: 343px;
+          width: 100%;
+          height: 40px;
+          background-color: #f8f8f8;
+          border: solid 1px #e1e1e1;
+          padding: 12px 17px 12px 20px;
+          border-radius: 25px;
+  
+          &::placeholder {
+            font-size: 13px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            letter-spacing: -0.4px;
+            text-align: left;
+            color: #999;
           }
         }
-
-        &.selected {
-          border-bottom: 1px solid blue;
+  
+        .search-btn {
+          position: absolute;
+          top: 0px;
+          right: 10px;
+          width: 40px;
+          height: 40px;
         }
       }
     }
+  
+    .right-nav-list {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      position: relative;
+      height: 45px;
+  
+      .cs-list {
+        position: absolute;
+        width: 107px;
+        height: 97px;
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        right: 0;
+        border: 1px solid #e1e1e1;
+      }
+  
+      .cs-list > li {
+        white-space: nowrap;
+        margin-left: 15px;
+      }
+    }
+  
+    .right-nav-list > li {
+      white-space: nowrap;
+      padding-left: 15px;
+  
+      a {
+        font-size: 14px;
+        color: #666666;
+        letter-spacing: -0.35px;
+        line-height: 26px;
+      }
+  
+      button {
+        font-size: 14px;
+        color: #666666;
+        letter-spacing: -0.35px;
+        line-height: 26px;
+      }
+  
+      &:first-of-type{
+        a{
+          line-height: 26px;
+          font-weight: 400;
+          color: #666666;
+          letter-spacing: -0.35px;
 
-    .cashback-btn {
-      width: 135px;
-      height: 32px;
-      background-color: #ffde43;
-      border: 1px solid #ffde43;
-      border-radius: 5px;
-      font-size: 16px;
-      font-weight: 500;
-      line-height: 1.63;
-      letter-spacing: -0.4px;
+          &::after {
+            display: none;
+          }
+        }
+      }
+
+      &:first-of-type::after {
+        content: "|";
+        flex-shrink: 0;
+        font-size: 14px;
+        color: #cccccc;
+        letter-spacing: -0.35px;
+        line-height: 26px;
+        margin-left: 14px;
+      }
+    }
+  }
+
+  
+  .nav-cate {
+    display: block;
+    border-top: 1px solid #e1e1e1;
+    border-bottom: 1px solid #e1e1e1;
+    width: 100%;
+    .nav-con {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+  
+      .cate-list {
+        display: flex;
+        height: 100%;
+  
+        & > li {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          white-space: nowrap;
+          margin-right: 70px;
+          font-size: 18px;
+          font-weight: 500;
+          line-height: 1.44;
+          letter-spacing: -0.45px;
+          text-align: left;
+  
+          a {
+            color: #1d1d1d;
+          }
+  
+          &:hover {
+            a {
+              color: blue;
+            }
+          }
+  
+          &.selected {
+            position: relative;
+            font-weight: 700;
+            
+            &:after{
+              content: "";
+              display: block;
+              position: absolute;
+              bottom:0;
+              left:0;
+              right:0;
+              height:3px;
+              background:#0071e3;
+            }
+          }
+        }
+      }
+  
+      .cashback-btn {
+        width: 135px;
+        height: 40px;
+        background-color: #ffde43;
+        border: 1px solid #ffde43;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.63;
+        letter-spacing: -0.4px;
+      }
     }
   }
 }
