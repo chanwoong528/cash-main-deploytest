@@ -27,7 +27,7 @@ const CustomerSideNav = () => {
           <Link href={"/customer/faq"}>FAQ</Link>
         </li>
         <li>
-          <Link href={"/"}>카카오톡 문의</Link>
+          <Link href="https://pf.kakao.com/_uJADxb" target="_blank">카카오톡 문의</Link>
         </li>
       </ul>
     </nav>
