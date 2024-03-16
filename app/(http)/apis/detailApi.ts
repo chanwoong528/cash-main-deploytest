@@ -15,7 +15,6 @@ export const getPointShopHome = async () => {
 export const getDetailList = async (urlGubun, params) => {
   const fetchDetailList = await http.get(
     `${urlGubun}/list`,
-    {},
     {
       params: params,
     }

@@ -7,12 +7,29 @@
     align-items: center;
     justify-content: center;
 
-    margin: 50px 0;
     > ul {
-      max-width: 1200px;
-      display: grid;
-      gap: 50px 30px;
-      grid-template-columns: repeat(4, 1fr);
+      overflow: hidden;
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      padding: 0 19px;
+      background-color: #fff;
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .hotdeal-main {
+
+    .hotdeal-list-con {
+      margin: 50px 0;
+      > ul {
+        display: grid;
+        max-width: 1200px;
+        gap: 50px 30px;
+        padding: 0;
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
   }
 }
