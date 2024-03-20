@@ -18,17 +18,17 @@ const HotDealItem = ({ item }) => {
           alt={item.name}
         />
         <p className="hotdeal-title">{item.name}</p>
-        <div class="info-box">
+        <div className="info-box">
           {item.sale !== 0 && (
-            <var class="percent">{item.sale}%</var>
+            <var className="percent">{item.sale}%</var>
           )}
-          <div class="price-box">
+          <div className="price-box">
             {item.originPrice !== 0 && (
-              <var class="op">
+              <var className="op">
                 {item.originPrice}<abbr>원</abbr>
               </var>
             )}
-            <var class="cp">
+            <var className="cp">
               {item.salePrice}<abbr>원</abbr>
             </var>
           </div>

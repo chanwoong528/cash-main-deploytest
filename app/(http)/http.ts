@@ -1,7 +1,7 @@
 //@ts-nocheck
 import axios from "axios";
 //let accToken = localStorage.getItem("accToken");
-export const baseUrl = "https://test-api.cashnamu.com";
+export const baseUrl = "https://test-api.cashnamu.com/cn";
 const customAxios = axios.create({
   baseURL: baseUrl,
   headers: {

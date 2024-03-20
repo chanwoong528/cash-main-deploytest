@@ -47,7 +47,10 @@ const demoPsData = [
 
 ]
 
-const PointShopDetailTable = ({ tableData }) => {
+const PointShopDetailTable = (
+  // { tableData }
+  ) => {
+  // console.log(tableData, "tableData")
   return (
     <div className="ps-detail-table">
       <ul className="ps-list">
