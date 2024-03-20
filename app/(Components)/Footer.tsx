@@ -12,12 +12,12 @@ const Footer = () => {
             </Link>
           </li>
           <li>
-            <Link href={"/faq"} passHref>
+            <Link href={"/customer/faq"} passHref>
               FAQ
             </Link>
           </li>
           <li>
-            <Link href={"/annoucne"} passHref>
+            <Link href={"/customer/annoucne"} passHref>
               공지사항
             </Link>
           </li>
@@ -27,7 +27,7 @@ const Footer = () => {
             </Link>
           </li>
           <li className="isNotMobile">
-            <Link href={"/service"} passHref>
+            <Link href={"/termsOfUse"} passHref>
               이용약관
             </Link>
           </li>
@@ -38,7 +38,7 @@ const Footer = () => {
           <header className="isNotMobile">
             <h4>고객센터</h4>
           </header>
-          <Link href={"/"} passHref>
+          <Link href="https://pf.kakao.com/_uJADxb" target="_blank">
             카카오톡 문의
           </Link>
           <p>월~금 9:00 ~ 18:00 (주말, 공휴일 휴무)</p>
@@ -52,7 +52,7 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link href={"/service"} passHref>
+              <Link href={"/termsOfUse"} passHref>
                 이용약관
               </Link>
             </li>

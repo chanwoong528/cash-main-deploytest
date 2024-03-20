@@ -35,6 +35,7 @@ const bannerInfo = {
 
 const page = async ({ searchParams }) => {
   const data = await getData(searchParams);
+
   return (
     <>
       <main className="points-main">

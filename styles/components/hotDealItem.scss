@@ -1,76 +1,170 @@
 .hotdeal-item {
-  width: 262px;
+  position: relative;
+  z-index: 5;
+  width: 50%;
+  padding-top: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: #fff;
+  box-sizing: border-box;
   cursor: pointer;
-  border: none;
 
-  .image-box {
-    width: 250px;
-    height: 250px;
-    border-radius: 10px;
+  .image-box{
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding-top: 100%;
+    width: 100%;
+    height:0;
 
-    img {
-      border-radius: 10px;
-      width: 100%;
-      height: 100%;
+    img{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      max-height: 100%;
+      max-width: 100%;
+      min-height: 100%;
+      min-width: 100%;
+      width: 0;
+      height: 0;
+      margin: auto;
+      object-fit: cover;
     }
   }
 
-  h3 {
+  h3{
     display: -webkit-box;
     overflow: hidden;
-
-    font-size: 18px;
-    line-height: 1.56;
-    text-align: left;
+    margin-top: 15px;
+    font-size: 13px;
+    line-height: 18px;
+    word-break: break-all;
     color: #1d1d1d;
-
-    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    white-space: initial;
     -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 
-  .info-box {
+  .info-box{
     display: flex;
-    align-items: flex-end;
 
-    .percent {
-      text-align: left;
-      font-family: "Roboto";
-      font-size: 32px;
-      font-weight: 700;
-      line-height: 1.26;
+    .percent{
+      margin-top: 13px;
       color: #dd3729;
-      opacity: 0.8;
+      font-family: roboto, sans-serif;
+      font-size: 24px;
+      line-height: 26px;
+      letter-spacing: -.6px;
+      font-weight: 700;
+
+      abbr{
+        display:inline-block;
+        font-size: 13px;
+        line-height: 15px;
+      }
     }
 
-    .price-box {
-      margin-left: 7px;
-      display: flex;
-      flex-direction: column;
-
-      .op {
-        text-decoration: line-through;
-        font-size: 15px;
-        font-weight: normal;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 2.4;
-
-        text-align: left;
+    .price-box{
+      margin-top: 6px;
+      .op{
+        display: block;
+        margin-left: 5px;
+        text-decoration:line-through;
+        font-family: roboto, sans-serif;
+        margin-right: 1px;
+        font-size: 12px;
         color: #999;
-        abbr {
+        line-height: 12px;
+        letter-spacing: -.5px;
+
+        abbr{
+          font-size: 10px;
           color: #999;
         }
       }
 
-      .cp {
-        // height: fit-content;
-        margin-top: -14px;
-        font-size: 30px;
-        font-weight: 900;
-        font-style: normal;
-        line-height: 1.43;
-        text-align: left;
+      .cp{
+        display: inline-block;
+        padding-left: 0;
+        margin-top: 0;
+        margin-left: 5px;
+        font-family: roboto, sans-serif;
+        font-size: 19px;
+        font-weight: 500;
         color: #1d1d1d;
+        line-height: 19px;
+        vertical-align: bottom;
+        letter-spacing: -.5px;
+
+        abbr{
+          font-size: 12px;
+          color: #1d1d1d;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .hotdeal-item {
+    width: 262px;
+    border: none;
+    padding: 0;
+  
+    .image-box{
+      width: 250px;
+      padding-top: 250px;
+      border-radius: 10px;
+    }
+  
+    h3{
+      margin-top: 30px;
+      font-size: 18px;
+      line-height: 1.56;
+    }
+  
+    .info-box{
+      display:flex;
+
+      .percent{
+        margin-top: 26px;
+        font-size: 32px;
+        line-height: 1.2;
+  
+        abbr{
+          font-size: 13px;
+          line-height: 1.2;
+        }
+      }
+  
+      .price-box{
+        margin-top: 12px;
+        .op{
+          margin-left: 10px;
+          margin-right: 2px;
+          font-size: 15px;
+          line-height: 1.2;
+  
+          abbr{
+            font-size: 12px;
+          }
+        }
+  
+        .cp{
+          margin-left: 10px;
+          font-size: 30px;
+          line-height: 1.2;
+  
+          abbr{
+            font-size: 18px;
+          }
+        }
       }
     }
   }
