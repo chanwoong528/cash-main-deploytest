@@ -5,7 +5,7 @@ import React from "react";
 import Link from "next/link";
 
 import ImageWithFallback from "../../ImageWithFallback";
-
+import "./shoppingItem.scss";
 // import "../../../../styles/components/bestBrand.scss";
 
 const ShoppingItem = ({ item }) => {
@@ -43,18 +43,28 @@ const ShoppingItem = ({ item }) => {
   // :
   // 1
   return (
-    <Link href={`/shopping/${item.merchantId}${window.location.search}`}>
-      <div className="brand-slider-card">
-        <ImageWithFallback
-          src={item.imageLink}
-          width={207}
-          height={110}
-          objectFit="contain"
-          alt={item.brandName}
-        />
-        <p className="brand-title">{item.siteName}</p>
-      </div>
-    </Link>
+    <>
+      <div className="brand-slider-card shopping-card">
+        <Link href={`/shopping/${item.merchantId}${window?.location.search}`}>
+          <ImageWithFallback
+            src={item.imageLink}
+            width={120}
+            height={60}
+            objectFit="contain"
+            alt={item.brandName}
+          />
+          <p className="brand-title">
+            {item.siteName}
+          </p>
+        </Link>
+        <div className="brand-footer">
+          <p className="brand-commission">
+            {item.commissionComment}
+          </p>
+          <button className="brand-like-btn">like</button>
+        </div>
+      </div >
+    </>
   );
 };
 

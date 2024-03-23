@@ -1,32 +1,18 @@
 //@ts-nocheck
 "use client";
-import React, { useState, useEffect } from "react";
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import React, { useState } from "react";
+
 import "../../../styles/components/pagination.scss";
 
-const PaginationDefault = ({ paginationData }) => {
-  const { pageNumber, pageSize, paged, unpaged } = paginationData;
-  const [currentPage, setCurrentPage] = useState(pageNumber + 1);
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
+const PaginationClient = ({ paginationData, setCurPage }) => {
 
-  useEffect(() => {
-    if (paged) {
-      setCurrentPage(pageNumber + 1);
-    } else if (!unpaged) {
-      setCurrentPage(1);
-    }
-  }, [pageNumber, paged, unpaged]);
+  const { pageNumber, pageSize } = paginationData;
+  const [currentPage, setCurrentPage] = useState(pageNumber + 1);
 
   const onClickPageNum = (pageNumber) => {
     if (pageNumber > 0 && pageNumber <= pageSize) {
       setCurrentPage(pageNumber);
-      router.push(
-        `${pathname}?categCd=${searchParams.get("categCd") ? searchParams.get("categCd") : ""
-        }&cpage=${pageNumber}`
-      );
-      router.refresh();
+      setCurPage(pageNumber)
     }
   };
 
@@ -105,4 +91,4 @@ const PaginationDefault = ({ paginationData }) => {
   );
 };
 
-export default PaginationDefault;
+export default PaginationClient;

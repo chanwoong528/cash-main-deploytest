@@ -2,14 +2,19 @@
 'use client'
 import React from 'react'
 
-const CategoryNav = ({ navList, onClickFilter }) => {
+import "./categoryNav.scss";
+
+const CategoryNav = ({ navList, curFilter, onClickFilter }) => {
   return (
-    <nav>
-      카테고리
+    <nav className='category-nav'>
+      <p>카테고리</p>
       <ul>
         {navList.map((item, idx) => {
           return <li key={item.title}>
-            <button onClick={() => onClickFilter(item.categCd)}>
+            <button
+              className={curFilter === item.categCd ? "on" : ""}
+              onClick={() => onClickFilter(item.categCd)}
+            >
               {item.title}
             </button>
           </li>

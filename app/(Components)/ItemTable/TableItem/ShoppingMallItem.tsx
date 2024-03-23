@@ -1,6 +1,9 @@
 //@ts-nocheck
 import React from 'react'
 import Link from 'next/link'
+import ImageWithFallback from '../../ImageWithFallback';
+
+import "./shoppingMallItem.scss";
 
 const ShoppingMallItem = ({ itemData }) => {
   // {
@@ -17,7 +20,27 @@ const ShoppingMallItem = ({ itemData }) => {
   //   mobileCommissionComment: '4.9%'
   // },
   return (
-    <Link href={"/shopping/" + itemData.merchantId + window.location.search}>{itemData.siteName}</Link>
+    <div className='shopping-mall-item'>
+      <button className='mall-like-btn'>like brand</button>
+      <Link href={"/shopping/" + itemData.merchantId + window?.location.search}>
+        <ImageWithFallback
+          src={itemData.imageLink}
+          width={120}
+          height={60}
+          alt={itemData.siteName}
+          style={{
+            maxWidth: "100%",
+            height: "auto",
+          }}
+        />
+        <p className='mall-title'>
+          {itemData.siteName}
+        </p>
+        <p className='mall-commission'>
+          최대 {itemData.commissionComment}
+        </p>
+      </Link>
+    </div>
   )
 }
 
