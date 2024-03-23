@@ -3,10 +3,10 @@ import React from 'react'
 
 import { getShoppingMallPage } from '@/app/(http)/apis/productApi';
 
+import DefaultItemSlider from '@/app/(Components)/Slider/DefaultItemSlider';
 import ShoppingTable from '@/app/(Components)/ItemTable/ShoppingTable';
 
 import "../../../../../styles/pages/shoppingMallPage.scss";
-import DefaultItemSlider from '@/app/(Components)/Slider/DefaultItemSlider';
 
 async function getData(searchParams) {
   const shoppingMallData = await getShoppingMallPage(searchParams);

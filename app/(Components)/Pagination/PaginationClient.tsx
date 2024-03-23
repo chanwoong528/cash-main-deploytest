@@ -7,7 +7,7 @@ import "../../../styles/components/pagination.scss";
 const PaginationClient = ({ paginationData, setCurPage }) => {
 
   const { pageNumber, pageSize } = paginationData;
-  const [currentPage, setCurrentPage] = useState(pageNumber + 1);
+  const [currentPage, setCurrentPage] = useState(pageNumber);
 
   const onClickPageNum = (pageNumber) => {
     if (pageNumber > 0 && pageNumber <= pageSize) {
