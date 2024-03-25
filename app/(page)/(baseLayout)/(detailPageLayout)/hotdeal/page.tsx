@@ -29,6 +29,7 @@ const bannerInfo = {
 };
 
 const page = async ({ searchParams }) => {
+  console.log(1);
   const data = await getData(searchParams);
 
   return (

@@ -12,17 +12,17 @@ const Footer = () => {
             </Link>
           </li>
           <li>
-            <Link href={"/customer/faq"} passHref>
+            <Link href={"/customer/faq?gubun=S"} passHref>
               FAQ
             </Link>
           </li>
           <li>
-            <Link href={"/customer/annoucne"} passHref>
+            <Link href={"/customer"} passHref>
               공지사항
             </Link>
           </li>
           <li className="isNotMobile">
-            <Link href={"/policy"} passHref>
+            <Link href={"/privacy"} passHref>
               개인정보처리방침
             </Link>
           </li>
@@ -47,7 +47,7 @@ const Footer = () => {
           
           <ul className="isMobile">
             <li>
-              <Link href={"/policy"} passHref>
+              <Link href={"/privacy"} passHref>
                 개인정보처리방침
               </Link>
             </li>

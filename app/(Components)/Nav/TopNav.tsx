@@ -77,7 +77,7 @@ const TopNav = () => {
                     setShowCS(false);
                   }}
                 >
-                  <Link href={"/customer/faq"}>FAQ</Link>
+                  <Link href={"/customer/faq?gubun=S"}>FAQ</Link>
                 </li>
                 <li
                   onClick={() => {

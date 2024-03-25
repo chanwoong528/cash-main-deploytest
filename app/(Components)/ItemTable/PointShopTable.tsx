@@ -20,6 +20,7 @@ const PointShopTable = ({ type, color, title, data, navData }) => {
     setCurTab(navId);
     // setFilteredList(tableData.filter((item, idx) => item.mainCateg === navId));
   }, []);
+
   return (
     <section className="point-shop-section">
       <header className="point-shop-section-header">

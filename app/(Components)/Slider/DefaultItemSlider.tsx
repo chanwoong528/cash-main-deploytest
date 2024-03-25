@@ -79,7 +79,6 @@ const ComponentType = ({ itemList, callPage }) => {
         }}
       >
         {itemList.map((item) => {
-          console.log(item, "item")
           return (
             <SwiperSlide key={item.productNum}>
               <ShoppingItem item={item} key={item.brandId} />

@@ -22,13 +22,24 @@ const PaginationDefault = ({ paginationData }) => {
   const onClickPageNum = (pageNumber) => {
     if (pageNumber > 0 && pageNumber <= pageSize) {
       setCurrentPage(pageNumber);
-      router.push(
-        `${pathname}?categCd=${
-          searchParams.get("categCd") ? searchParams.get("categCd") : ""
-        }&cpage=${pageNumber}`
-      );
+      
+      if(searchParams.get('gubun') !== undefined){
+        router.push(
+          `${pathname}?gubun=${
+            searchParams.get("gubun") ? searchParams.get("gubun") : ""
+          }&cpage=${pageNumber}`
+        );
+      }else{
+        router.push(
+          `${pathname}?categCd=${
+            searchParams.get("categCd") ? searchParams.get("categCd") : ""
+          }&cpage=${pageNumber}`
+        );
+      }
+      
       router.refresh();
     }
+    
   };
 
   const renderPagination = () => {
