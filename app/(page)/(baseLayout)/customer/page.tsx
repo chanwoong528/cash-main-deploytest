@@ -1,6 +1,9 @@
 //@ts-nocheck
 import React from "react";
 import { getNotices } from "@/app/(http)/apis/customerApi";
+import Link from "next/link";
+
+import "../../../../styles/components/notice.scss";
 
 async function getData() {
   const noticeData = await getNotices();
@@ -12,7 +15,7 @@ const page = async () => {
   const data = await getData();
 
   return (
-    <section className="main-customer-section">
+    <section className="main-customer-section notice">
       <h3>공지사항</h3>
       <table>
         <colgroup>
@@ -27,19 +30,19 @@ const page = async () => {
             <th scope="col">등록일</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="notice-item">
           {data.map((noticeItem) => {
             return (
               <tr key={noticeItem.idx}>
-                <th scope="col">
-                  <a href="">{noticeItem.idx}</a>
-                </th>
-                <th scope="col">
-                  <a href="">{noticeItem.title}</a>
-                </th>
-                <th scope="col">
-                  <a href="">{noticeItem.createDate.slice(0, 10)}</a>
-                </th>
+                <td scope="col">
+                  <Link href={`/customer/${noticeItem.idx}`}>{noticeItem.idx}</Link>
+                </td>
+                <td scope="col" className="title">
+                  <Link href={`/customer/${noticeItem.idx}`}>{noticeItem.title}</Link>
+                </td>
+                <td scope="col">
+                  <Link href={`/customer/${noticeItem.idx}`}>{noticeItem.createDate.slice(0, 10)}</Link>
+                </td>
               </tr>
             );
           })}

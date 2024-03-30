@@ -7,12 +7,15 @@ import Link from "next/link";
 import TableNav from "./TableNav";
 
 import { POINTSHOP_LIST_TYPE } from "@/app/(util)/CATEGORY";
+import ImageWithFallback from "../ImageWithFallback";
 
 import "../../../styles/components/pointShopTable.scss";
 
 const PointShopTable = ({ type, color, title, data, navData }) => {
   const [curTab, setCurTab] = useState("");
 
+  console.log(data)
+  
   const [filteredList, setFilteredList] = useState([
     // ...tableData.filter((item, idx) => item.mainCateg.includes(DEFAULT_TAB)),
   ]);
@@ -20,6 +23,7 @@ const PointShopTable = ({ type, color, title, data, navData }) => {
     setCurTab(navId);
     // setFilteredList(tableData.filter((item, idx) => item.mainCateg === navId));
   }, []);
+
   return (
     <section className="point-shop-section">
       <header className="point-shop-section-header">
@@ -33,7 +37,28 @@ const PointShopTable = ({ type, color, title, data, navData }) => {
           onClickNavItem={onClickNavItem}
         />
       ) : null}
-      <ul>{/*TODO: */}</ul>
+      <ul>
+        {
+          data.map((item)=>{
+            return (
+              <li key={item.brandId}>
+                <Link href={"/"}>
+                  <div className="img">
+                    <ImageWithFallback
+                      src={item.imgLink}
+                      objectFit="contain"
+                      width={100}
+                      height={100}
+                      alt=""
+                    />
+                  </div>
+                  <p>{item.brandName}</p>
+                </Link>
+              </li>
+            )
+          })
+        }
+      </ul>
     </section>
   );
 };

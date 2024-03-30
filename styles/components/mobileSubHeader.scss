@@ -1,4 +1,4 @@
-.serviceHeader{
+.mobileSubHeader{
   position: fixed;
   top: 0;
   left: 0;
@@ -37,7 +37,7 @@
 }
 
 @media (min-width: 900px) {
-  .serviceHeader{
+  .mobileSubHeader{
     display: none;
   }
 

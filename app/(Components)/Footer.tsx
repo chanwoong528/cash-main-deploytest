@@ -1,33 +1,37 @@
 //@ts-nocheck
+"use client";
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 const Footer = () => {
+  const pathname = usePathname();
   return (
     <footer className="main-footer">
       <nav>
         <ul>
           <li>
-            <Link href={"/about"} passHref>
+            <Link href={"/about"} className={`${pathname === "/about" ? "on" : ""}`} passHref>
               캐시나무 소개
             </Link>
           </li>
           <li>
-            <Link href={"/customer/faq"} passHref>
+            <Link href={"/customer/faq?gubun=S"} className={`${pathname === "/customer/faq" ? "on" : ""}`} passHref>
               FAQ
             </Link>
           </li>
           <li>
-            <Link href={"/customer/annoucne"} passHref>
+            <Link href={"/customer"} className={`${pathname === "/customer" ? "on" : ""}`} passHref>
               공지사항
             </Link>
           </li>
           <li className="isNotMobile">
-            <Link href={"/policy"} passHref>
+            <Link href={"/privacy"} className={`${pathname === "/privacy" ? "on" : ""}`} passHref>
               개인정보처리방침
             </Link>
           </li>
           <li className="isNotMobile">
-            <Link href={"/termsOfUse"} passHref>
+            <Link href={"/termsOfUse"} className={`${pathname === "/termsOfUse" ? "on" : ""}`} passHref>
               이용약관
             </Link>
           </li>
@@ -47,7 +51,7 @@ const Footer = () => {
           
           <ul className="isMobile">
             <li>
-              <Link href={"/policy"} passHref>
+              <Link href={"/privacy"} passHref>
                 개인정보처리방침
               </Link>
             </li>

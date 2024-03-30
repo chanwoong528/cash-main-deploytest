@@ -9,8 +9,16 @@ import ImageWithFallback from "../../ImageWithFallback";
 // import "../../../../styles/components/bestBrand.scss";
 
 const PointShopItem = ({ item }) => {
+  let categCd_lvl1 = '';
+  if(item.categCd === 'CONV'){
+    categCd_lvl1 = 'PS_CONV';
+  }else if(item.categCd === 'WEST' || item.categCd === 'CAFE' || item.categCd === 'CHIKIN' || item.categCd === 'CONV' || item.categCd === 'JAPAN'){
+    categCd_lvl1 = 'PS_FOOD';
+  }else{
+    categCd_lvl1 = 'PS_PRODUCT';
+  }
   return (
-    <Link href={`/points/point_detail?categCd=${item.categCd}&brandId=${item.brandId}`}>
+    <Link href={`/points/point_detail?categCd=${categCd_lvl1}&categCd_lvl2=${item.categCd}&brandId=${item.brandId}`}>
       <div className="brand-slider-card">
         <ImageWithFallback
           src={item.imgLink}
@@ -19,7 +27,7 @@ const PointShopItem = ({ item }) => {
           objectFit="contain"
           alt={item.brandName}
         />
-        <p className="brand-title">{item.brandName}</p>
+        <p className="brand-title">{item.categCd}</p>
       </div>
     </Link>
   );

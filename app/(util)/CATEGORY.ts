@@ -30,3 +30,22 @@ export const POINTSHOP_CATE_TYPE = {
   PS_PRODUCT: "상품권/쿠폰",
   PS_FOOD: "푸드",
 };
+
+export const FAQ_LIST_TYPE = [
+  {
+    title: "시작하기",
+    gubun: "S"
+  },
+  {
+    title: "주문하기",
+    gubun: "O"
+  },
+  {
+    title: "캐시백받기",
+    gubun: "C"
+  },
+  {
+    title: "포인트샵",
+    gubun: "R"
+  }
+];

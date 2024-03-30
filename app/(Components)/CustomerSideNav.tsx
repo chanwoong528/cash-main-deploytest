@@ -24,7 +24,7 @@ const CustomerSideNav = () => {
           <Link href={"/customer"}>공지사항</Link>
         </li>
         <li className={`${pathname === "/customer/faq" ? "on" : ""}`}>
-          <Link href={"/customer/faq"}>FAQ</Link>
+          <Link href={"/customer/faq?gubun=S"}>FAQ</Link>
         </li>
         <li>
           <Link href="https://pf.kakao.com/_uJADxb" target="_blank">카카오톡 문의</Link>
