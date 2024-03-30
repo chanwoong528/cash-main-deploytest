@@ -31,18 +31,28 @@ const MainTable = ({ title, content, navData, tableData, tableCate }) => {
         return data.map((shoppingMall, idx) => {
           return (
             <ShoppingItem
-              itemData={shoppingMall}
               key={shoppingMall.merchantId}
+              itemData={shoppingMall}
             />
           );
         });
       case CATE_LABEL.MERCHANT:
         return data.map((hotItem, idx) => {
-          return <HotDealItem itemData={hotItem} key={hotItem.brandId} />;
+          return (
+            <HotDealItem
+              key={hotItem.brandId}
+              itemData={hotItem}
+            />
+          )
         });
       case CATE_LABEL.POINT:
         return data.slice(0, 10).map((brand, idx) => {
-          return <PointItem itemData={brand} key={brand.brandId} />;
+          return (
+            <PointItem
+              key={brand.brandId}
+              itemData={brand}
+            />
+          );
         });
     }
   }, []);
@@ -52,9 +62,8 @@ const MainTable = ({ title, content, navData, tableData, tableCate }) => {
   }, []);
   return (
     <section
-      className={`itemtable${
-        tableCate === CATE_LABEL.MERCHANT ? " color" : ""
-      }`}
+      className={`itemtable${tableCate === CATE_LABEL.MERCHANT ? " color" : ""
+        }`}
     >
       <header>
         <h2>{title}</h2>
@@ -69,20 +78,18 @@ const MainTable = ({ title, content, navData, tableData, tableCate }) => {
         />
       )}
       <ul
-        className={`table-list${
-          tableCate === CATE_LABEL.POINT
-            ? " point-list"
-            : tableCate === CATE_LABEL.MERCHANT
+        className={`table-list${tableCate === CATE_LABEL.POINT
+          ? " point-list"
+          : tableCate === CATE_LABEL.MERCHANT
             ? " hotdeal-list"
             : ""
-        }`}
+          }`}
       >
         {renderItem(tableCate, filteredList)}
       </ul>
       <MoreHref
-        title={`${
-          tableCate !== CATE_LABEL.MERCHANT ? title : "핫 딜 상품"
-        } 전체보기`}
+        title={`${tableCate !== CATE_LABEL.MERCHANT ? title : "핫 딜 상품"
+          } 전체보기`}
         href={URL[tableCate]}
         color={tableCate !== CATE_LABEL.MERCHANT}
       />

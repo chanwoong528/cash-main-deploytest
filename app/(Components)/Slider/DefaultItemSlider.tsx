@@ -74,14 +74,14 @@ const ComponentType = ({ itemList, callPage }) => {
     return (
       <Swiper
         slidesPerView={2}
-        spaceBetween={30}
+        spaceBetween={10}
         freeMode={true}
         navigation={true}
         modules={[Navigation]}
-        className="default-slider"
+        className="default-slider shopping-slider"
         breakpoints={{
           900: {
-            slidesPerView: 4
+            slidesPerView: 5
           }
         }}
       >

@@ -8,11 +8,13 @@ import "../../../../styles/components/hotDealItem.scss";
 
 const HotDealItem = ({ itemData }) => {
   return (
-    <li key={itemData?.productName} className="hotdeal-item">
+    <li
+      key={itemData?.productName}
+      className="hotdeal-item"
+    >
       <Link href={`/hotdeal/${itemData.productNum}`}>
         <div className="image-box">
           <ImageWithFallback
-            // src={itemData.image}
             src={!!itemData.image ? itemData.image : itemData.imgLink}
             width={260}
             height={260}
