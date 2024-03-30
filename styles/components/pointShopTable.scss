@@ -1,22 +1,74 @@
 @use "../_common/variable";
 
-.point-shop-section {
-  @include variable.contents__wrap;
 
-  .point-shop-section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 50px 0 30px;
-    h3 {
-      font-size: 24px;
-      font-weight: 700;
-      padding-left: 42px;
-      background: url("/asset/icons/icon_bell.png") no-repeat 0 50%;
+.pointshop-table-wrap {
+  width: 100%;
+
+  &.first{
+    border-top: 1px solid #dfdfdf;
+
+    .point-shop-section{
+      border-top: 8px solid #f1f1f1;
+    }
+
+    .point-shop-section-header{
+      padding: 47px 20px 10px;
+      border-top: 1px solid #dfdfdf;
     }
   }
 
-  .itemtable-nav ul {
-    justify-content: flex-start;
+  .point-shop-section-header{  
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 20px 10px;
+    border-bottom: 1px solid #dfdfdf;
+    
+    h3 {
+      padding-left:18px;
+      background: url("/asset/icons/icon_bell.png") no-repeat 0 3px / 15px 12px;
+    }
+
+    a{
+      display:inline-block;
+      width: 24px;
+      height: 24px;
+      overflow:hidden;
+      text-indent:-999px;
+      background: url("/asset/images/ico_arw_right.png") no-repeat 50% 50% / 5px 9px;
+    }
+
+    & + .itemtable-nav{
+      display: none;
+    }
+
+    & ~ ul{
+      padding: 20px 0;
+      background: #f8f8f8;
+      border-bottom: 1px solid #dfdfdf;
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .point-shop-section {
+    @include variable.contents__wrap;
+  
+    .point-shop-section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 50px 0 30px;
+      h3 {
+        font-size: 24px;
+        font-weight: 700;
+        padding-left: 42px;
+        background: url("/asset/icons/icon_bell.png") no-repeat 0 50%;
+      }
+    }
+  
+    .itemtable-nav ul {
+      justify-content: flex-start;
+    }
   }
 }

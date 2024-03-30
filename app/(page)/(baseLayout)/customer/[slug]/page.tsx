@@ -50,7 +50,6 @@ async function getData(idx) {
 
 const page = async ({ params }: { params: { idx: string } }) => {
   // const testpageNumber = Number(params.slug)
-  console.log('a');
   
   const pageNumber = Number(params.slug);
   const data = await getData(pageNumber);

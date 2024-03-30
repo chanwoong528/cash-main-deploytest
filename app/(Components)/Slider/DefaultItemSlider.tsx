@@ -20,12 +20,18 @@ const ComponentType = ({ itemList, callPage }) => {
   if (callPage === "bestBrand") {
     return (
       <Swiper
-        slidesPerView={4.5}
-        spaceBetween={30}
+        slidesPerView={"auto"}
+        spaceBetween={8}
         freeMode={true}
         navigation={true}
         modules={[Navigation]}
         className="default-slider"
+        breakpoints={{
+          900: {
+            slidesPerView : 4.5,
+            spaceBetween : 30
+          }
+        }}
       >
         {itemList.map((item) => {
           return (
@@ -63,6 +69,7 @@ const ComponentType = ({ itemList, callPage }) => {
       </Swiper>
     )
   }
+
   if (callPage === "shopping") {
     return (
       <Swiper

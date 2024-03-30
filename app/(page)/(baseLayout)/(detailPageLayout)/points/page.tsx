@@ -45,7 +45,7 @@ const page = async ({ searchParams }) => {
           title={"인기브랜드"}
           itemList={data.itemPopulList}
         />
-        <div className="pointshop-table-wrap">
+        <div className="pointshop-table-wrap first">
           <PointShopTable title="상품권/쿠폰" data={data.itemListPsProduct} />
         </div>
         <div className="pointshop-table-wrap bg-g">
