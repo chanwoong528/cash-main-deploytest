@@ -47,6 +47,11 @@
       border-radius: 10px;
       background-color: #f1f1f1;
 
+      .swiper-button-next,
+      .swiper-button-prev{
+        display: flex;
+      }
+  
       .brand-slider-card {
         display: flex;
         flex-direction: column;
@@ -55,16 +60,25 @@
 
         width: 207px;
         background-color: #fff;
+        padding:0;
 
         border-radius: 10px;
         border: solid 1px #e1e1e1;
-
+        overflow: hidden;
+        
         img {
           width: 207px;
+          max-width: 100%;
           object-fit: contain;
         }
+
         .brand-title {
+          display: block;
           padding-bottom: 25px;
+          font-size: 16px;
+          font-weight: 400;
+          text-align: center;
+          color: #999;
         }
       }
     }

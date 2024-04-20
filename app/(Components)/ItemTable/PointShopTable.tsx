@@ -1,8 +1,9 @@
 //@ts-nocheck
 "use client";
-
-import React, { useState, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import { useMediaQuery } from "react-responsive"
 import Link from "next/link";
+import DefaultItemSlider from "@/app/(Components)/Slider/DefaultItemSlider";
 
 import TableNav from "./TableNav";
 
@@ -11,18 +12,47 @@ import ImageWithFallback from "../ImageWithFallback";
 
 import "../../../styles/components/pointShopTable.scss";
 
-const PointShopTable = ({ type, color, title, data, navData }) => {
-  const [curTab, setCurTab] = useState("");
+const mobileDataCalculator = (data) => {
+  const dataCopy = data.map((item) => item);
 
-  console.log(data)
+  const length = data.length;
+  const divide = Math.floor(length / 6 ) + (Math.floor( length % 6 ) > 0 ? 1 : 0);
+  const newArray = [];
   
-  const [filteredList, setFilteredList] = useState([
-    // ...tableData.filter((item, idx) => item.mainCateg.includes(DEFAULT_TAB)),
-  ]);
+  for (let i = 0; i < divide; i++) {
+    newArray.push(dataCopy.splice(0, 6)); 
+  }
+
+  return newArray;
+}
+
+const PointShopTable = ({ type, title, data, navData }) => {
+  const [curData, setCurData] = useState(data);
+  const [curTab, setCurTab] = useState("");
+  const isDesktop = useMediaQuery({
+ 	  query: "(min-width: 900px)"
+	})
+
+  const mobileData = mobileDataCalculator(data);
+  
+  useEffect(()=>{
+    if(isDesktop){
+      setCurData(curData)
+    }else{
+      setCurData(mobileData)
+    }
+  },[isDesktop])
+
   const onClickNavItem = useCallback((navId) => {
+    if(navId === ''){
+      setCurData(data);
+    }else{
+      setCurData(data.filter((item) => item.categCd === navId));
+    }
     setCurTab(navId);
-    // setFilteredList(tableData.filter((item, idx) => item.mainCateg === navId));
+    
   }, []);
+
 
   return (
     <section className="point-shop-section">
@@ -37,28 +67,37 @@ const PointShopTable = ({ type, color, title, data, navData }) => {
           onClickNavItem={onClickNavItem}
         />
       ) : null}
-      <ul>
-        {
-          data.map((item)=>{
-            return (
-              <li key={item.brandId}>
-                <Link href={"/"}>
-                  <div className="img">
-                    <ImageWithFallback
-                      src={item.imgLink}
-                      objectFit="contain"
-                      width={100}
-                      height={100}
-                      alt=""
-                    />
-                  </div>
-                  <p>{item.brandName}</p>
-                </Link>
-              </li>
-            )
-          })
-        }
-      </ul>
+
+      {isDesktop ? (
+        <div className="point_shop-item_list">
+          {
+            curData.map((item)=>{
+              return (
+                <div key={item.brandId} className="item">
+                  <Link href={"/"}>
+                    <div className="img">
+                      <ImageWithFallback
+                        src={item.imgLink}
+                        objectFit="contain"
+                        width={100}
+                        height={100}
+                        alt=""
+                      />
+                    </div>
+                    <p>{item.brandName}</p>
+                  </Link>
+                </div>
+              )
+            })
+          }
+          </div>
+      ) : (
+        <DefaultItemSlider
+          callPage={"pointShopList"}
+          title={"상품리스트"}
+          itemList={mobileData}
+        />
+      )}
     </section>
   );
 };
