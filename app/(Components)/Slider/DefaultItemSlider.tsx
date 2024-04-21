@@ -3,14 +3,16 @@
 import React from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 
+import BestBrandItem from "./Item/BestBrandItem";
 import PointShopItem from "./Item/PointShopItem";
 import HotDealItem from "./Item/HotDealItem";
 import ShoppingItem from "./Item/ShoppingItem";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import 'swiper/css/pagination';
 
 import "../../../styles/components/defaultSlider.scss";
 import "../../../styles/components/bestBrand.scss";
@@ -28,7 +30,7 @@ const ComponentType = ({ itemList, callPage }) => {
         className="default-slider"
         breakpoints={{
           900: {
-            slidesPerView : 4.5,
+            slidesPerView : 5.2,
             spaceBetween : 30
           }
         }}
@@ -36,7 +38,7 @@ const ComponentType = ({ itemList, callPage }) => {
         {itemList.map((item) => {
           return (
             <SwiperSlide key={item.brandId}>
-              <PointShopItem item={item} />
+              <BestBrandItem item={item} />
             </SwiperSlide>
           );
         })}
@@ -44,6 +46,25 @@ const ComponentType = ({ itemList, callPage }) => {
     )
   }
 
+  if (callPage === "pointShopList") {
+    return (
+      <Swiper
+        navigation={false}
+        pagination={{ clickable: true }}
+        modules={[Pagination]}
+        className="default-slider"
+      >
+        {itemList.map((item, idx) => {
+          return (
+            <SwiperSlide key={idx}>
+              <PointShopItem item={item} />
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    )
+  }
+  
   if (callPage === "hotdeal") {
     return (
       <Swiper

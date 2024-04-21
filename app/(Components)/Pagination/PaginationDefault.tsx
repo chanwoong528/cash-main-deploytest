@@ -33,7 +33,7 @@ const PaginationDefault = ({ paginationData }) => {
         router.push(
           `${pathname}?categCd=${
             searchParams.get("categCd") ? searchParams.get("categCd") : ""
-          }&cpage=${pageNumber}``
+          }&cpage=${pageNumber}`
         );
       }
 
