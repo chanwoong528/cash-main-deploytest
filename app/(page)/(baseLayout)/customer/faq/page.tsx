@@ -25,7 +25,7 @@ const page = async ({ searchParams }) => {
           {
             FAQ_LIST_TYPE.map((item) => {
               return (
-                <Link href={`/customer/faq?gubun=${item.gubun}`} className={`${item.gubun === searchParams.gubun ? "on" : ""}`}>{item.title}</Link>
+                <Link key={item.gubun} href={`/customer/faq?gubun=${item.gubun}`} className={`${item.gubun === searchParams.gubun ? "on" : ""}`}>{item.title}</Link>
               )
             })
           }
@@ -33,7 +33,7 @@ const page = async ({ searchParams }) => {
       </article>
       <FaqTable
         itemList={data.faqList.content}
-        />
+      />
       <PaginationDefault paginationData={data.faqList.pageable} />
     </section>
   )

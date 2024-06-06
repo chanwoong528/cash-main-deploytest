@@ -33,6 +33,7 @@ export default async function Home() {
           width={1200}
           height={485}
           src="/asset/images/main-jumbo.png"
+          alt="main-jumbo"
           style={{
             maxWidth: "100%",
             height: "auto",
