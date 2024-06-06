@@ -22,7 +22,7 @@ const ShoppingMallItem = ({ itemData }) => {
   return (
     <div className='shopping-mall-item'>
       <button className='mall-like-btn'>like brand</button>
-      <Link href={"/shopping/" + itemData.merchantId + window?.location.search}>
+      <Link href={"/shopping/" + itemData.merchantId + (window?.location.search ?? "")}>
         <ImageWithFallback
           src={itemData.imageLink}
           width={120}

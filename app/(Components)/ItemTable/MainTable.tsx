@@ -29,6 +29,7 @@ const MainTable = ({ title, content, navData, tableData, tableCate }) => {
     switch (tableCate) {
       case CATE_LABEL.SHOPPING:
         return data.map((shoppingMall, idx) => {
+
           return (
             <ShoppingItem
               key={shoppingMall.merchantId}
@@ -38,9 +39,10 @@ const MainTable = ({ title, content, navData, tableData, tableCate }) => {
         });
       case CATE_LABEL.MERCHANT:
         return data.map((hotItem, idx) => {
+
           return (
             <HotDealItem
-              key={hotItem.brandId}
+              key={hotItem.productName}
               itemData={hotItem}
             />
           )

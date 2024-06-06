@@ -1,6 +1,6 @@
 //@ts-nocheck
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
@@ -19,6 +19,9 @@ import "../../../styles/components/bestBrand.scss";
 import "../../../styles/components/hotdealothers.scss";
 
 const ComponentType = ({ itemList, callPage }) => {
+
+
+
   if (callPage === "bestBrand") {
     return (
       <Swiper
@@ -30,14 +33,14 @@ const ComponentType = ({ itemList, callPage }) => {
         className="default-slider"
         breakpoints={{
           900: {
-            slidesPerView : 5.2,
-            spaceBetween : 30
+            slidesPerView: 5.2,
+            spaceBetween: 30
           }
         }}
       >
-        {itemList.map((item) => {
+        {itemList.map((item, idx) => {
           return (
-            <SwiperSlide key={item.brandId}>
+            <SwiperSlide key={item.brandId ?? idx}>
               <BestBrandItem item={item} />
             </SwiperSlide>
           );
@@ -56,7 +59,7 @@ const ComponentType = ({ itemList, callPage }) => {
       >
         {itemList.map((item, idx) => {
           return (
-            <SwiperSlide key={idx}>
+            <SwiperSlide key={item.brandId ?? idx}>
               <PointShopItem item={item} />
             </SwiperSlide>
           );
@@ -64,7 +67,7 @@ const ComponentType = ({ itemList, callPage }) => {
       </Swiper>
     )
   }
-  
+
   if (callPage === "hotdeal") {
     return (
       <Swiper
@@ -80,9 +83,9 @@ const ComponentType = ({ itemList, callPage }) => {
           }
         }}
       >
-        {itemList.map((item) => {
+        {itemList.map((item, idx) => {
           return (
-            <SwiperSlide key={item.productNum}>
+            <SwiperSlide key={item.productNum ?? idx}>
               <HotDealItem item={item} key={item.brandId} />
             </SwiperSlide>
           );
@@ -106,9 +109,9 @@ const ComponentType = ({ itemList, callPage }) => {
           }
         }}
       >
-        {itemList.map((item) => {
+        {itemList.map((item, idx) => {
           return (
-            <SwiperSlide key={item.productNum}>
+            <SwiperSlide key={item.productNum ?? idx}>
               <ShoppingItem item={item} key={item.brandId} />
             </SwiperSlide>
           );
@@ -119,11 +122,19 @@ const ComponentType = ({ itemList, callPage }) => {
 }
 
 const DefaultItemSlider = ({ title, itemList, callPage }) => {
+  const [mounted, setMounted] = useState<boolean>(false);
+  useEffect(() => {
+    setMounted(true);
+  }, [])
+
   return (
-    <div className={`defaultSlider ${callPage}`}>
-      <h3>{title}</h3>
-      <ComponentType itemList={itemList} callPage={callPage} />
-    </div>
+    <>
+      {!!mounted && <div className={`defaultSlider ${callPage}`}>
+        <h3>{title}</h3>
+        <ComponentType itemList={itemList} callPage={callPage} />
+      </div>
+      }
+    </>
   );
 };
 
