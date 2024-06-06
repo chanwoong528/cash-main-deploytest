@@ -26,7 +26,7 @@ const page = async ({ params, searchParams }: { params: { slug: string } }) => {
     <>
       <DetailPageNav pageType={URL.SHOPPING} navList={data.category1List} />
       <main>
-        {data.shoppingMallItem.siteName}
+        {data.shoppingMallItem.siteName}!!!
       </main>
     </>
   )

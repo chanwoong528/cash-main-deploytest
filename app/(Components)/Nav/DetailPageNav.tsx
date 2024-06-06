@@ -38,7 +38,7 @@ const DetailPageNav = ({ pageType, navList }) => {
   return (
     <nav className="detail-nav">
       <ul>
-        {navList.map((item, idx) => {
+        {navList?.map((item, idx) => {
           return (
             <li key={item.categCd} className={renderActiveClassName(item, idx)}>
               <button onClick={() => onClickTabBtn(idx + 1, item.categCd)}>

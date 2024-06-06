@@ -1,6 +1,6 @@
 //@ts-nocheck
 
-import React, { useState, useMemo } from "react";
+import React from "react";
 
 import { CATE_LABEL } from "@/app/(util)/CATEGORY";
 
@@ -11,7 +11,7 @@ const TableNav = ({ tableCate, navData, onClickNavItem, curTab }) => {
         }`}
     >
       <ul>
-        {navData.map((navItem, idx) => {
+        {navData?.map((navItem, idx) => {
           return (
             <li
               key={navItem.categCd + idx}
