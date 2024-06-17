@@ -14,11 +14,11 @@ const DetailPageNav = ({ pageType, navList }) => {
   const onClickTabBtn = (tableIdx, categCd) => {
     if (pageType === URL.POINT) {
       router.push(`${pageType}/point_detail?${!!categCd ? categCd : ""}`);
-      return router.refresh();
+      // return router.refresh();
     }
     console.log(pageType, navList)
     router.push(`${pageType}?categCd=${!!categCd ? categCd : ""}`);
-    return router.refresh();
+    // return router.refresh();
   };
 
   const renderActiveClassName = (item, idx) => {
