@@ -11,8 +11,10 @@ import ShoppingTable from '@/app/(Components)/ItemTable/ShoppingTable';
 import "../../../../../styles/pages/shoppingMallPage.scss";
 
 async function getData(searchParams) {
-
-  const shoppingMallData = await getShoppingMallPage(searchParams);
+  let params = {
+    categCd: searchParams.categCd || null,
+  };
+  const shoppingMallData = await getShoppingMallPage(params);
   return {
     category1List: shoppingMallData.categ1List,
     category2List: shoppingMallData.category2List,
