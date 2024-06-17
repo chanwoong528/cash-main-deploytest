@@ -11,6 +11,7 @@ import ShoppingTable from '@/app/(Components)/ItemTable/ShoppingTable';
 import "../../../../../styles/pages/shoppingMallPage.scss";
 
 async function getData(searchParams) {
+
   const shoppingMallData = await getShoppingMallPage(searchParams);
   return {
     category1List: shoppingMallData.categ1List,
@@ -20,17 +21,17 @@ async function getData(searchParams) {
   }
 }
 const page = async ({ searchParams }) => {
-  const data = await getData(searchParams);
+  const { merchantList, popmerchantList, category1List, category2List } = await getData(searchParams);
   return (
     <>
-      <DetailPageNav pageType={URL.SHOPPING} navList={data.category1List} />
+      <DetailPageNav pageType={URL.SHOPPING} navList={category1List} />
       <main>
         <DefaultItemSlider
           callPage={"shopping"}
           title={"인기브랜드"}
-          itemList={data.popmerchantList} />
+          itemList={popmerchantList} />
 
-        <ShoppingTable itemList={data.merchantList} navList2nd={data.category2List} />
+        <ShoppingTable itemList={merchantList} navList2nd={category2List} />
       </main>
     </>
   )

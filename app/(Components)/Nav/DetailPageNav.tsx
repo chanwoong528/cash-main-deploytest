@@ -13,13 +13,10 @@ const DetailPageNav = ({ pageType, navList }) => {
 
   const onClickTabBtn = (tableIdx, categCd) => {
     if (pageType === URL.POINT) {
-      if (!categCd) {
-        router.push(`${pageType}`);
-        return router.refresh();
-      }
-      router.push(`${pageType}/point_detail?categCd=${categCd}`);
+      router.push(`${pageType}/point_detail?${!!categCd ? categCd : ""}`);
       return router.refresh();
     }
+    console.log(pageType, navList)
     router.push(`${pageType}?categCd=${!!categCd ? categCd : ""}`);
     return router.refresh();
   };
@@ -38,7 +35,7 @@ const DetailPageNav = ({ pageType, navList }) => {
   return (
     <nav className="detail-nav">
       <ul>
-        {navList?.map((item, idx) => {
+        {navList.map((item, idx) => {
           return (
             <li key={item.categCd} className={renderActiveClassName(item, idx)}>
               <button onClick={() => onClickTabBtn(idx + 1, item.categCd)}>

@@ -39,27 +39,27 @@ const page = async ({ params, searchParams }: { params: { slug: string } }) => {
       <DetailPageNav pageType={URL.SHOPPING} navList={data.category1List} />
       <main className='main-shop-detail'>
         <section>
-          <div>
-            <header>
+          <div className='main-shop-detail-header-wrap'>
+            <header className='main-shop-detail-header'>
               <div className='img-con'>
                 <ImageWithFallback
                   src={shopInfo.imageLink}
                   objectFit="contain"
                   width={120}
-                  height={60}
+                  height={55}
                   alt=""
                 />
               </div>
-              <div>
+              <div className='info-con'>
                 <h3>
                   {shopInfo.siteName}
                 </h3>
-                <p>{shopInfo.commissionComment}</p>
+                <p className="sales-desc">최대 {shopInfo.commissionComment}</p>
               </div>
             </header>
-            <div>
-              <button>heart</button>
-              <Link href={shopInfo.deeplink} target='__blank'>쇼핑하기</Link>
+            <div className='btn-con'>
+              <button className='like-btn'>heart</button>
+              <Link className='link-to-mall' href={shopInfo.deeplink} target='__blank'>쇼핑하기</Link>
             </div>
           </div>
 

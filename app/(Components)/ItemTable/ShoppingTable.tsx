@@ -4,11 +4,12 @@ import React, { useState } from 'react'
 import CategoryNav from '../Nav/CategoryNav';
 import ShoppingMallItem from './TableItem/ShoppingMallItem';
 
-import "./shoppingTable.scss";
 import PaginationClient from '../Pagination/PaginationClient';
+import "./shoppingTable.scss";
 
 
 const ShoppingTable = ({ itemList, navList2nd }) => {
+  console.log(navList2nd)
   const [curFilter, setCurFilter] = useState("");
   const [curPage, setCurPage] = useState(1)
 
