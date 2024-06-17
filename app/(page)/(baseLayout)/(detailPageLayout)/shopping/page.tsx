@@ -12,8 +12,9 @@ import "../../../../../styles/pages/shoppingMallPage.scss";
 
 async function getData(searchParams) {
   let params = {
-    categCd: searchParams.categCd || null,
+    categCd: searchParams.categCd || null, 
   };
+  //if directly passing searchParams, to below api call, it will refresh the page for some reason
   const shoppingMallData = await getShoppingMallPage(params);
   return {
     category1List: shoppingMallData.categ1List,
