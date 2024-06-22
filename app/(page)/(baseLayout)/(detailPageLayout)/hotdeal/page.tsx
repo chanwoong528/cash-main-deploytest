@@ -14,6 +14,7 @@ import "../../../../../styles/pages/hotDeal.scss";
 async function getData(searchParams) {
   let params = {
     cpage: searchParams.cpage || 1,
+    itemPage: searchParams.itemPage || 1,
     categCd: searchParams.categCd || null,
   };
   const hotDealDetailData = await getDetailList(URL.HOTDEAL, params);

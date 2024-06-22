@@ -12,12 +12,16 @@ const DetailPageNav = ({ pageType, navList }) => {
   const searchParams = useSearchParams();
 
   const onClickTabBtn = (tableIdx, categCd) => {
-    if (pageType === URL.POINT) {
-      router.push(`${pageType}/point_detail?${!!categCd ? categCd : ""}`);
+    if (pageType === URL.POINT && categCd !== '') {
+      router.push(`${pageType}/point_detail?categCd=${categCd}&categCd_lvl2=${categCd === 'PS_FOOD' ? 'CAFE' : categCd === 'CONV' ? 'CONV' : 'COUPON' }&cpage=1`);
       // return router.refresh();
+    }else{
+      router.push(`${pageType}?categCd=${!!categCd ? categCd : ""}`);
     }
-    console.log(pageType, navList)
-    router.push(`${pageType}?categCd=${!!categCd ? categCd : ""}`);
+
+    // router.push(`${pageType}?categCd=${!!categCd ? categCd : ""}`);
+    
+    
     // return router.refresh();
   };
 

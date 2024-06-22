@@ -23,10 +23,20 @@ const PaginationDefault = ({ paginationData }) => {
     if (pageNumber > 0 && pageNumber <= pageSize) {
       setCurrentPage(pageNumber);
       
-      if(searchParams.get('gubun') !== undefined){
+      if(searchParams.get('gubun') !== undefined && searchParams.get('gubun') !== null){
         router.push(
           `${pathname}?gubun=${
             searchParams.get("gubun") ? searchParams.get("gubun") : ""
+          }&cpage=${pageNumber}`
+        );
+      }else if(searchParams.get('categCd_lvl2') !== undefined){
+        router.push(
+          `${pathname}?categCd=${
+            searchParams.get("categCd") ? searchParams.get("categCd") : ""
+          }&categCd_lvl2=${
+            searchParams.get("categCd_lvl2") ? searchParams.get("categCd_lvl2") : ""
+          }&brandId=${
+            searchParams.get("brandId") ? searchParams.get("brandId") : ""
           }&cpage=${pageNumber}`
         );
       }else{
@@ -36,10 +46,8 @@ const PaginationDefault = ({ paginationData }) => {
           }&cpage=${pageNumber}`
         );
       }
-
       router.refresh();
     }
-    
   };
 
   const renderPagination = () => {
