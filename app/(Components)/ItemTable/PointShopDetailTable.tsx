@@ -47,13 +47,11 @@ const demoPsData = [
 
 ]
 
-const PointShopDetailTable = (
-  // { tableData }
-  ) => {
+const PointShopDetailTable = ({ tableData }) => {
   return (
     <div className="ps-detail-table">
       <ul className="ps-list">
-        {demoPsData.map((item, idx) =>
+        {tableData.map((item, idx) =>
           <PointItem key={item.brandId + idx} itemData={item} psType={"ps-detail-item"} />
         )}
       </ul>
