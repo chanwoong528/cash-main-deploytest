@@ -25,4 +25,6 @@ const handler = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
 });
 
+  console.log("problem")
+
 export { handler as GET, handler as POST };
