@@ -4,7 +4,6 @@ import Image from "next/image";
 import { getShoppingMallList } from "@/app/(http)/apis/productApi";
 
 import MainTable from "@/app/(Components)/ItemTable/MainTable";
-
 import { CATE_LABEL } from "@/app/(util)/CATEGORY";
 
 async function getData() {
@@ -25,7 +24,7 @@ async function getData() {
 }
 
 export default async function Home() {
-  const data = await getData();
+  const apiData = await getData();
   return (
     <main>
       <article className="main-jumbo">
@@ -43,9 +42,9 @@ export default async function Home() {
       <MainTable
         title="쇼핑몰"
         content="쇼핑할때마다 캐시백이 최대 20%"
-        tableData={data.mallD.merchantList}
-        navData={data.mallD.categList}
-        tableCate={CATE_LABEL.SHOPPING}
+        tableData={apiData.mallD.merchantList}
+        navData={apiData.mallD.categList}
+        tableCate={apiData.SHOPPING}
       />
       <article className="main-banner">
         <h3>스마트한 쇼핑 습관</h3>
@@ -66,14 +65,14 @@ export default async function Home() {
       </article>
       <MainTable
         title="MD추천 핫 딜 상품"
-        tableData={data.hotD.hotdealList}
+        tableData={apiData.hotD.hotdealList}
         // navData={data.mallD.categList}
         tableCate={CATE_LABEL.MERCHANT}
       />
       <MainTable
         title="포인트 샵"
-        tableData={data.pointD.pointshopList}
-        navData={data.pointD.categList}
+        tableData={apiData.pointD.pointshopList}
+        navData={apiData.pointD.categList}
         tableCate={CATE_LABEL.POINT}
       />
     </main>

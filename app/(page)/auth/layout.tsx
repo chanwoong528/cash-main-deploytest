@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import AuthSession from "@/app/(provider)/AuthSession";
+
 
 import "../../../styles/styles.scss";
 
@@ -15,7 +17,9 @@ export default function LoginLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning={true}>
-        <main className="main-login">{children}</main>{" "}
+        <AuthSession>
+          <main className="main-login">{children}</main>{" "}
+        </AuthSession>
       </body>
     </html>
   );

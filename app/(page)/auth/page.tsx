@@ -1,7 +1,16 @@
+"use client"; // 필수!
+import { signIn, signOut, useSession } from "next-auth/react";
+
 import LoginHref from "@/app/(Components)/Buttons/LoginHref";
 import Image from "next/image";
 // import LoginBtn from "../../(Components)/common/LoginBtn";
+
+
+
 export default function Page() {
+
+  const { data } = useSession();
+
   return <>
     <div className="login-container">
       <div className="login-header">
@@ -20,7 +29,7 @@ export default function Page() {
       </div>
       <div className="login-body">
         <Image
-          src="/asset/images/loginbanner.png"
+          src="/asset/images/login-banner.png"
           alt="캐시나무 타이틀"
           width={392}
           height={151}
@@ -31,22 +40,16 @@ export default function Page() {
       </div>
       <div className="login-footer">
         <h2>간편 로그인</h2>
-
-        <LoginHref
-          title="네이버 아이디로 로그인"
+        <button
           className="login-btn-naver"
-          href="/"
-        />
-        <LoginHref
-          title="카카오 아이디로 로그인"
+          onClick={() => signIn('naver', { callbackUrl: "/" })}>
+          네이버 아이디로 로그인
+        </button>
+        <button
           className="login-btn-kakao"
-          href="/"
-        />
-        <LoginHref
-          title="구글 아이디로 로그인"
-          className="login-btn-google"
-          href="/"
-        />
+          onClick={() => signIn('kakao', { callbackUrl: "/" })}>
+          카카오 아이디로 로그인
+        </button>
       </div>
     </div>
   </>;

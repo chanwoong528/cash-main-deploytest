@@ -13,15 +13,15 @@ const DetailPageNav = ({ pageType, navList }) => {
 
   const onClickTabBtn = (tableIdx, categCd) => {
     if (pageType === URL.POINT && categCd !== '') {
-      router.push(`${pageType}/point_detail?categCd=${categCd}&categCd_lvl2=${categCd === 'PS_FOOD' ? 'CAFE' : categCd === 'CONV' ? 'CONV' : 'COUPON' }&cpage=1`);
+      router.push(`${pageType}/point_detail?categCd=${categCd}&categCd_lvl2=${categCd === 'PS_FOOD' ? 'CAFE' : categCd === 'CONV' ? 'CONV' : 'COUPON'}&cpage=1`);
       // return router.refresh();
-    }else{
+    } else {
       router.push(`${pageType}?categCd=${!!categCd ? categCd : ""}`);
     }
 
     // router.push(`${pageType}?categCd=${!!categCd ? categCd : ""}`);
-    
-    
+
+
     // return router.refresh();
   };
 
@@ -39,7 +39,7 @@ const DetailPageNav = ({ pageType, navList }) => {
   return (
     <nav className="detail-nav">
       <ul>
-        {navList.map((item, idx) => {
+        {navList?.map((item, idx) => {
           return (
             <li key={item.categCd} className={renderActiveClassName(item, idx)}>
               <button onClick={() => onClickTabBtn(idx + 1, item.categCd)}>

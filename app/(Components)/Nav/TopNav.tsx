@@ -4,12 +4,18 @@ import React, { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 const TopNav = () => {
-  const pathname = usePathname();
 
+  const session = useSession();
+  const pathname = usePathname();
   const [showCS, setShowCS] = useState(false); //고객센터
   const [searchTerm, setSearchTerm] = useState("");
+
+  console.log("session: ", session)
+
+
   return (
     <>
       <nav className="main-nav">
@@ -50,7 +56,11 @@ const TopNav = () => {
         </div>
         <ul className="right-nav-list">
           <li>
-            <Link href={"/auth"}>로그인</Link>
+            {
+              session.data?.user?.email
+                ? <Link href="/">{session.data?.user?.email}</Link>
+                : <Link href={"/auth"}>로그인</Link>
+            }
           </li>
           <li>
             <button
