@@ -11,20 +11,36 @@ const demoItem = {
   price: 1000
 }
 
-const PointProduct = () => {
+const PointProduct = ({ itemData } : { itemData : {
+  goodsId: String,
+  goodsName: String,
+  brandId: String,
+  brandName: String,
+  price: Number,
+  sprice: Number,
+  imgLink: String,
+}}) => {
+  const itemInfo = {
+    goodsId: itemData.goodsId,
+    goodsName: itemData.goodsName,
+    brandId: itemData.brandId,
+    title : itemData.brandName,
+    imageLink : itemData.imgLink,
+    price: itemData.price,
+    sprice: itemData.sprice,
+  }
+
   return (
     <li>
       <Link href={""}>
         <ImageWithFallback
-          src={demoItem.imageLink}
-          alt={demoItem.title}
+          src={itemInfo.imageLink}
+          alt={itemInfo.title}
           width={280}
           height={280}
           objectFit='contain'
         />
-
       </Link>
-
     </li>
   )
 }
