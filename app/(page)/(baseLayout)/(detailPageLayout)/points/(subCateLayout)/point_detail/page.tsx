@@ -33,10 +33,14 @@ async function getData({ searchParams } : { searchParams: { cateCd: string, cate
     el.image = el.imgLink;
     return el;
   })
-
+  
   return {
     pageTitle: pageTitle,
-    categCd_lvl2_List: categCd_lvl2_List,
+    categCd_lvl2 : {
+      totalPages: pointDetailData.pointshopList.totalPages,
+      pageable: pointDetailData.pointshopList.pageable,
+      contentList: categCd_lvl2_List,
+    }
   };
 }
 
@@ -47,9 +51,11 @@ const page = async ({ searchParams }: { searchParams: { cateCd: string, categCd_
     <main>
       <h3>{detailInfo.pageTitle}</h3>
       <PointShopDetailTable 
-        tableData={detailInfo.categCd_lvl2_List}
+        tableData={detailInfo.categCd_lvl2}
         />
-      <PointShopDetailProductTable />
+      <PointShopDetailProductTable
+
+        />
     </main>
   );
 };

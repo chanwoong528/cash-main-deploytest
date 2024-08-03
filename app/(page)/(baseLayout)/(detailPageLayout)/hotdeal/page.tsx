@@ -18,10 +18,12 @@ async function getData(searchParams) {
     categCd: searchParams.categCd || null,
   };
   const hotDealDetailData = await getDetailList(URL.HOTDEAL, params);
+
   return {
     subCategories: hotDealDetailData?.categ1List,
     itemList: hotDealDetailData.hotdealList?.contents,
     paginationData: hotDealDetailData.hotdealList?.pageable,
+    totalPages : hotDealDetailData.hotdealList?.totalPages
   };
 }
 const bannerInfo = {
@@ -44,7 +46,10 @@ const page = async ({ searchParams }) => {
               // <HotdealCard key={item.productNum} itemData={item} />;
             })}
           </ul>
-          <PaginationDefault paginationData={data.paginationData} />
+          <PaginationDefault
+            paginationData={data.paginationData}
+            totalPages={data.totalPages}
+            />
         </article>
       </main>
     </>

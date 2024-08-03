@@ -15,7 +15,10 @@ const PointShopDetailProductTable = () => {
       <ul>
         {/* {Array.from({ length: 10 }).map(item => <PointProduct />)} */}
       </ul>
-      <PaginationDefault paginationData={paginationData} />
+      <PaginationDefault
+        paginationData={paginationData}
+        totalPages={1}
+        />
     </div>
   )
 }

@@ -34,7 +34,10 @@ const page = async ({ searchParams }) => {
       <FaqTable
         itemList={data.faqList.content}
       />
-      <PaginationDefault paginationData={data.faqList.pageable} />
+      <PaginationDefault
+        paginationData={data.faqList.pageable}
+        totalPages={data.faqList.totalPages}
+        />
     </section>
   )
 }
