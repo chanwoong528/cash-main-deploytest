@@ -12,7 +12,8 @@ async function getData({ searchParams } : { searchParams: { cateCd: string, cate
     categCd_lvl2: searchParams.categCd_lvl2 || null,
   };
   const pointDetailData = await getPointShopDetail(searchParams.categCd_lvl2, params);
-  const pointDetailBrandData = await getDetailList('/pointshop/item', {});
+
+  const pointDetailBrandData = await getDetailList('/pointshop/item', { categCd: searchParams.categCd});
 
   let pageTitle;
   switch (params.categCd){
@@ -35,7 +36,6 @@ async function getData({ searchParams } : { searchParams: { cateCd: string, cate
     return el;
   })
   
-  console.log(pointDetailBrandData)
   
   return {
     pageTitle: pageTitle,

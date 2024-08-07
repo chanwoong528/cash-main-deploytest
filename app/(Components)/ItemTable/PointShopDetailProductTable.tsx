@@ -4,6 +4,8 @@ import React from 'react'
 import PaginationDefault from '../Pagination/PaginationDefault';
 import PointProduct from './TableItem/PointProduct';
 
+import "../../../styles/components/PointShopDetailProductTable.scss";
+
 const paginationData = {
   pageNumber: 0,
   pageSize: 10,
@@ -12,7 +14,7 @@ const paginationData = {
 };
 const PointShopDetailProductTable = ({ tableData }) => {
   return (
-    <div>
+    <div className="ps-detail-product-table">
       <ul className="ps-list">
         {tableData.contentList.map((item, idx) =>
           <PointProduct key={item.brandId + idx} itemData={item} psType={"ps-detail-item"} />
