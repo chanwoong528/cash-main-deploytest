@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import "../../../styles/components/pagination.scss";
 
-const PaginationDefault = ({ paginationData }) => {
+const PaginationDefault = ({ paginationData, totalPages }) => {
   const { pageNumber, pageSize, paged, unpaged } = paginationData;
   const [currentPage, setCurrentPage] = useState(pageNumber + 1);
   const router = useRouter();
@@ -20,7 +20,7 @@ const PaginationDefault = ({ paginationData }) => {
   }, [pageNumber, paged, unpaged]);
 
   const onClickPageNum = (pageNumber) => {
-    if (pageNumber > 0 && pageNumber <= pageSize) {
+    if (pageNumber > 0 && pageNumber <= totalPages) {
       setCurrentPage(pageNumber);
       
       if(searchParams.get('gubun') !== undefined && searchParams.get('gubun') !== null){
@@ -51,7 +51,7 @@ const PaginationDefault = ({ paginationData }) => {
   };
 
   const renderPagination = () => {
-    const maxPageNumber = pageSize;
+    const maxPageNumber = totalPages;
     const currentPageIndex = currentPage - 1;
     const startPage = Math.max(currentPageIndex - 2, 0);
     const endPage = Math.min(startPage + 4, maxPageNumber - 1);
@@ -78,50 +78,54 @@ const PaginationDefault = ({ paginationData }) => {
   };
 
   return (
-    <nav className="pagination-con">
-      <button
-        className="paginate_btn paginate_btn-first"
-        disabled={currentPage === 1}
-        type="button"
-        onClick={() => {
-          onClickPageNum(1);
-        }}
-      >
-        Go to first page
-      </button>
-      <button
-        className="paginate_btn paginate_btn-prev"
-        disabled={currentPage === 1}
-        type="button"
-        onClick={() => {
-          onClickPageNum(currentPage - 1);
-        }}
-      >
-        Go to prev page
-      </button>
-      {pageSize > 1 && renderPagination()}
+    <>
+      {totalPages > 1 && (
+        <nav className="pagination-con">
+        <button
+          className="paginate_btn paginate_btn-first"
+          disabled={currentPage === 1}
+          type="button"
+          onClick={() => {
+            onClickPageNum(1);
+          }}
+        >
+          Go to first page
+        </button>
+        <button
+          className="paginate_btn paginate_btn-prev"
+          disabled={currentPage === 1}
+          type="button"
+          onClick={() => {
+            onClickPageNum(currentPage - 1);
+          }}
+        >
+          Go to prev page
+        </button>
+        {renderPagination()}
 
-      <button
-        className="paginate_btn paginate_btn-next"
-        disabled={currentPage === pageSize}
-        type="button"
-        onClick={() => {
-          onClickPageNum(currentPage + 1);
-        }}
-      >
-        Go to next page
-      </button>
-      <button
-        className="paginate_btn paginate_btn-last"
-        disabled={currentPage === pageSize}
-        type="button"
-        onClick={() => {
-          onClickPageNum(pageSize);
-        }}
-      >
-        Go to last page
-      </button>
-    </nav>
+        <button
+          className="paginate_btn paginate_btn-next"
+          disabled={currentPage === totalPages}
+          type="button"
+          onClick={() => {
+            onClickPageNum(currentPage + 1);
+          }}
+        >
+          Go to next page
+        </button>
+        <button
+          className="paginate_btn paginate_btn-last"
+          disabled={currentPage === totalPages}
+          type="button"
+          onClick={() => {
+            onClickPageNum(totalPages);
+          }}
+        >
+          Go to last page
+        </button>
+        </nav>
+      )}
+    </>
   );
 };
 

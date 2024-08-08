@@ -46,18 +46,24 @@ const page = async ({ searchParams }) => {
           itemList={data.itemPopulList}
         />
         <div className="pointshop-table-wrap first">
-          <PointShopTable title="상품권/쿠폰" data={data.itemListPsProduct} />
+          <PointShopTable
+            categCd="PS_PRODUCT"
+            data={data.itemListPsProduct}
+            />
         </div>
         <div className="pointshop-table-wrap bg-g">
-          <PointShopTable title="편의점" data={data.itemListPsConv} />
+          <PointShopTable
+            categCd="PS_CONV"
+            data={data.itemListPsConv}
+            />
         </div>
         <div className="pointshop-table-wrap">
           <PointShopTable
             type={POINTSHOP_LIST_TYPE.WITH_NAV}
-            title="푸드"
+            categCd="PS_FOOD"
             data={data.itemListPsFood}
             navData={data.foodNavList}
-          />
+            />
         </div>
       </article>
     </main>

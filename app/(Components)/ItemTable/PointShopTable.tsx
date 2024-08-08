@@ -26,7 +26,7 @@ const mobileDataCalculator = (data) => {
   return newArray;
 }
 
-const PointShopTable = ({ type, title, data, navData }) => {
+const PointShopTable = ({ type, categCd, data, navData }) => {
   const [curData, setCurData] = useState(data);
   const [curTab, setCurTab] = useState("");
   const isDesktop = useMediaQuery({
@@ -52,12 +52,11 @@ const PointShopTable = ({ type, title, data, navData }) => {
     setCurTab(navId);
     
   }, []);
-
-
+  
   return (
     <section className="point-shop-section">
       <header className="point-shop-section-header">
-        <h3>{title}</h3>
+        <h3>{categCd === 'PS_CONV' ? '편의점' : categCd === 'PS_PRODUCT' ? '상품권/쿠폰' : 'Food'}</h3>
         <Link href={"/"}>전체보기</Link>
       </header>
       {POINTSHOP_LIST_TYPE.WITH_NAV === type ? (
