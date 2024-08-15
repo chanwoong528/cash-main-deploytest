@@ -21,7 +21,7 @@ const ShoppingTable = ({ itemList, navList2nd }) => {
       <CategoryNav navList={navList2nd} curFilter={curFilter} onClickFilter={onClickFilter} />
       <ul className='main-shopping-list'>
         {itemList
-          .filter(item => {
+          ?.filter(item => {
             if (curFilter === "") return item
             return Number(item.categCd) === Number(curFilter)
           })
@@ -35,7 +35,7 @@ const ShoppingTable = ({ itemList, navList2nd }) => {
         paginationData={{
           pageNumber: curPage,
           pageSize: itemList
-            .filter(item => {
+            ?.filter(item => {
               if (curFilter === "") return item
               return Number(item.categCd) === Number(curFilter)
             }).length / 16

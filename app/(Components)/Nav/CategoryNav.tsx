@@ -9,7 +9,7 @@ const CategoryNav = ({ navList, curFilter, onClickFilter }) => {
     <nav className='category-nav'>
       <p>카테고리</p>
       <ul>
-        {navList.map((item, idx) => {
+        {navList?.map((item, idx) => {
           return <li key={item.title}>
             <button
               className={curFilter === item.categCd ? "on" : ""}
