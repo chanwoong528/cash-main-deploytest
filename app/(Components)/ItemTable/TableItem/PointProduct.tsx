@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import ImageWithFallback from '../../ImageWithFallback'
 
-const PointProduct = ({ itemData } : { itemData : {
+const PointProduct = ({ categCd, itemData } : { categCd:string, itemData : {
   goodsId: String,
   goodsName: String,
   brandId: String,
@@ -23,7 +23,7 @@ const PointProduct = ({ itemData } : { itemData : {
 
   return (
     <li>
-      <Link href={""}>
+      <Link href={`/points/point_detail/${itemInfo.goodsId}?categCd=${categCd}`}>
         <div className='img'>
           <ImageWithFallback
             src={itemInfo.imageLink}

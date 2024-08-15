@@ -6,10 +6,10 @@ import ImageWithFallback from "../../ImageWithFallback";
 import "./PointItem.scss";
 
 
-const PointItem = ({ itemData, psType }) => {
+const PointItem = ({ linkURL, itemData, psType }) => {
   return (
     <li className={`card-item ps-item ${psType}`} key={itemData.brandId}>
-      <a href={""}>
+      <a href={`/points/point_detail?${linkURL}&brandId=${itemData.brandId}`}>
         <div className="image-box">
           <ImageWithFallback
             src={itemData.image.includes('https://') ?

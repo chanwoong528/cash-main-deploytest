@@ -13,7 +13,7 @@ const TopNav = () => {
   const [showCS, setShowCS] = useState(false); //고객센터
   const [searchTerm, setSearchTerm] = useState("");
 
-  console.log("session: ", session)
+//  console.log("session: ", session)
 
 
   return (

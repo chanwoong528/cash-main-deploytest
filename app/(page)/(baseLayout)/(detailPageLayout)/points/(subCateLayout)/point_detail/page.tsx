@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from "react";
 
 import PointShopDetailTable from "@/app/(Components)/ItemTable/PointShopDetailTable";
@@ -5,16 +6,25 @@ import PointShopDetailProductTable from "@/app/(Components)/ItemTable/PointShopD
 
 import { getPointShopDetail, getDetailList } from "@/app/(http)/apis/detailApi";
 
-async function getData({ searchParams } : { searchParams: { cateCd: string, categCd_lvl2: string, brandId: string, categCd: string, cpage: string } }) {
+async function getData({ searchParams } : { searchParams: { cateCd: string, level: string, categCd_lvl2: string, brandId: string, categCd: string, cpage: string, subCpage: string } }) {
   let params = {
-    cpage: searchParams.cpage || 1,
     categCd: searchParams.categCd || null,
-    categCd_lvl2: searchParams.categCd_lvl2 || null,
+    // categCd_lvl2: searchParams.categCd_lvl2 || null,
+    cpage: searchParams.subCpage || 1,
+    size:12
   };
-  const pointDetailData = await getPointShopDetail(searchParams.categCd_lvl2, params);
+  
+  let itemParams = {
+    categCd: searchParams.categCd || null,
+    level: searchParams.level || null,
+    brandId: searchParams.brandId || null,
+    cpage: searchParams.cpage || 1,
+    size:12
+  }
 
-  const pointDetailBrandData = await getDetailList('/pointshop/item', { categCd: searchParams.categCd});
-
+  const pointDetailData = await getPointShopDetail(searchParams.categCd, params);
+  const pointDetailBrandData = await getDetailList('/pointshop/item', itemParams);
+  
   let pageTitle;
   switch (params.categCd){
     case 'PS_PRODUCT': 
@@ -36,15 +46,17 @@ async function getData({ searchParams } : { searchParams: { cateCd: string, cate
     return el;
   })
   
-  
   return {
     pageTitle: pageTitle,
     categCd_lvl2 : {
+      categCd: searchParams.categCd,
+      categCd_lvl2: searchParams.categCd_lvl2,
       totalPages: pointDetailData.pointshopList.totalPages,
       pageable: pointDetailData.pointshopList.pageable,
       contentList: categCd_lvl2_List,
     },
     brandItem : {
+      categCd: searchParams.categCd,
       totalPages: pointDetailBrandData.pointshopItemList.totalPages,
       pageable: pointDetailBrandData.pointshopItemList.pageable,
       contentList: pointDetailBrandData.pointshopItemList.contents
@@ -52,12 +64,15 @@ async function getData({ searchParams } : { searchParams: { cateCd: string, cate
   };
 }
 
-const page = async ({ searchParams }: { searchParams: { cateCd: string, categCd_lvl2: string, brandId: string, categCd: string, cpage: string } }) => {
+const page = async ({ searchParams }: { searchParams: { cateCd: string, level: string, categCd_lvl2: string, brandId: string, categCd: string, cpage: string, foodTab: string, subCpage: string } }) => {
   const detailInfo = await getData({ searchParams });
 
   return (
     <main>
-      <h3>{detailInfo.pageTitle}</h3>
+      <header className="ps-detail-header">
+        <h3>{detailInfo.pageTitle}</h3>
+      </header>
+
       <PointShopDetailTable 
         tableData={detailInfo.categCd_lvl2}
         />

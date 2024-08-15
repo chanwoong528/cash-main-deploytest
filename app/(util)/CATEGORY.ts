@@ -5,14 +5,13 @@ export const CATE_LABEL = {
   HOTDEAL: "HOTDEAL",
 };
 
-export const FOOT_CATE = {
-  ALL: "",
-  CAFE: "카페/디저트",
-  CHIKIN: "치킨",
-  CONV: "편의점",
-  JAPAN: "일식/돈까스",
-  WEST: "양식/피자",
-};
+export const FOOD_CATE = [
+  { categCd: '', level: 1, title: '전체' },
+  { categCd: 'CAFE', level: 2, title: '카페/디저트' },
+  { categCd: 'CHIKIN', level: 2, title: '치킨' },
+  { categCd: 'JAPAN', level: 2, title: '일식/돈까스' },
+  { categCd: 'WEST', level: 2, title: '양식/피자' }
+]
 
 export const URL = {
   SHOPPING: "/shopping",
