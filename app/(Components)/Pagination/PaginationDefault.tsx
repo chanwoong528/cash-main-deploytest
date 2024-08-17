@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import "../../../styles/components/pagination.scss";
 
-const PaginationDefault = ({ paginationData, totalPages }) => {
+const PaginationDefault = ({ paginationData, totalPages, subPagination }) => {
   const { pageNumber, pageSize, paged, unpaged } = paginationData;
   const [currentPage, setCurrentPage] = useState(pageNumber + 1);
   const router = useRouter();
@@ -22,7 +22,7 @@ const PaginationDefault = ({ paginationData, totalPages }) => {
   const onClickPageNum = (pageNumber) => {
     if (pageNumber > 0 && pageNumber <= totalPages) {
       setCurrentPage(pageNumber);
-      
+
       if(searchParams.get('gubun') !== undefined && searchParams.get('gubun') !== null){
         router.push(
           `${pathname}?gubun=${
@@ -30,15 +30,35 @@ const PaginationDefault = ({ paginationData, totalPages }) => {
           }&cpage=${pageNumber}`
         );
       }else if(searchParams.get('categCd_lvl2') !== undefined){
-        router.push(
-          `${pathname}?categCd=${
-            searchParams.get("categCd") ? searchParams.get("categCd") : ""
-          }&categCd_lvl2=${
-            searchParams.get("categCd_lvl2") ? searchParams.get("categCd_lvl2") : ""
-          }&brandId=${
-            searchParams.get("brandId") ? searchParams.get("brandId") : ""
-          }&cpage=${pageNumber}`
-        );
+        if(subPagination){
+          router.push(
+            `${pathname}?categCd=${
+              searchParams.get("categCd") ? searchParams.get("categCd") : ""
+            }&level=1&categCd_lvl2=${
+              searchParams.get("categCd_lvl2") ? searchParams.get("categCd_lvl2") : "ALL"
+            }&brandId=${
+              searchParams.get("brandId") ? searchParams.get("brandId") : ""
+            }&cpage=${
+              searchParams.get("cpage") ? searchParams.get("cpage") : "1"
+            }&subCpage=${
+              pageNumber
+            }
+          `);
+        }else{
+          router.push(
+            `${pathname}?categCd=${
+              searchParams.get("categCd") ? searchParams.get("categCd") : ""
+            }&level=1&categCd_lvl2=${
+              searchParams.get("categCd_lvl2") ? searchParams.get("categCd_lvl2") : "ALL"
+            }&brandId=${
+              searchParams.get("brandId") ? searchParams.get("brandId") : ""
+            }&cpage=${
+              pageNumber
+            }&subCpage=${
+              searchParams.get("subCpage") ? searchParams.get("subCpage") : "1"
+            }
+          `);
+        }
       }else{
         router.push(
           `${pathname}?categCd=${
@@ -67,7 +87,10 @@ const PaginationDefault = ({ paginationData, totalPages }) => {
               key={pageNumber}
               className={pageNumber === currentPage ? "on" : ""}
             >
-              <button type="button" onClick={() => onClickPageNum(pageNumber)}>
+              <button
+                type="button"
+                onClick={() => onClickPageNum(pageNumber)}
+                >
                 {pageNumber}
               </button>
             </li>

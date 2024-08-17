@@ -1,0 +1,283 @@
+.pointshop-detail {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin:30px auto 0;
+  justify-content: space-between;
+
+  &>figure{
+    width: 50%;
+
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  header{
+    position: relative;
+    width: calc(50% - 60px);
+    padding-bottom:80px;
+  }
+}
+
+.point-simple{
+  h5{
+    padding: 30px 0;
+    font-size: 24px;
+    font-weight: 400;
+    color: #666;
+  }
+  
+  .point-simple-txt {
+    border-top: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
+    padding: 40px 0 60px;
+
+    .title {
+      font-size: 28px;
+      color: #1d1d1d;
+      font-weight: 400;
+      margin-top: 0;
+    }
+  }
+
+  .point-price{
+    div{
+      width: 35px;
+      height: 35px;
+      margin-top: 5px;
+    }
+
+    h3{
+      font-size: 40px;
+    }
+  }
+}
+
+.point-info{
+  display: flex;
+  flex-direction: row;
+  height: 60px;
+  line-height: 60px;
+  width: 100%;
+  border-bottom: 1px solid #e3e3e3;
+
+  p{
+    font-size: 18px;
+    width: 20%;
+    font-weight: 400;
+    color: #1d1d1d;
+
+    &:nth-child(2){
+      width: 80%;
+      color: #999;
+    }
+  }
+}
+.point-btn{
+  position: absolute;
+  left:0;
+  bottom: 0;
+  height: 65px;
+  line-height: 65px;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 500;
+  width: 100%;
+  background-color: #0071e3;
+  border: unset;
+  cursor: pointer;
+}
+
+.point-detail{
+  width: 100%;
+  margin-top: 80px;
+
+  h3{ 
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: 500;
+    color: #1d1d1d;
+  }
+
+  .point-detail-txt {
+    margin-top: 20px;
+    margin-bottom: 100px;
+    padding: 40px 0 80px;
+    width: 100%;
+    border-bottom: 2px solid #000;
+    border-top: 2px solid #000;
+    font-size: 18px;
+    color: #666;
+    font-weight: 400;
+    white-space: pre-wrap;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 1000px) {
+  .pointshop-detail {
+    header{
+      width: calc(50% - 50px);
+      padding-bottom:60px;
+    }
+  }
+
+  .point-simple{
+    h5{
+      padding: 20px 0;
+      font-size: 20px;
+    }
+    
+    .point-simple-txt {
+      padding: 30px 0 40px;
+
+      .title {
+        font-size: 24px;
+      }
+    }
+
+    .point-price{
+      div{
+        width: 25px;
+        height: 25px;
+      }
+
+      h3{
+        font-size: 33px;
+      }
+    }
+  }
+
+  .point-info{
+    height: 45px;
+    line-height: 45px;
+
+    p{
+      font-size: 16px;
+    }
+  }
+  .point-btn{
+    height: 55px;
+    line-height: 55px;
+    font-size: 20px;
+  }
+
+  .point-detail{
+    margin-top: 60px;
+
+    h3{ 
+      font-size: 22px;
+    }
+
+    .point-detail-txt {
+      margin-top: 15px;
+      margin-bottom: 80px;
+      padding: 30px 0 60px;
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 769px) {
+  .pointshop-detail {
+    &>figure{
+      width: 100%;
+    }
+    header{
+      width: 100%;
+      padding-bottom:0;
+    }
+  }
+
+  .point-simple{
+    h5{
+      font-weight: 700;
+      padding: 30px 24px 0;
+      font-size: 16px;
+    }
+    
+    .point-simple-txt {
+      padding:0 24px 0;
+      border: 0;
+
+      .title {
+        margin-top: 7px;
+        font-size: 16px;
+        color: #1d1d1d;
+        line-height: 23px;
+        letter-spacing: -.4px;
+      }
+    }
+
+    .point-price{
+      div{
+        width: 18px;
+        height: 18px;
+        margin-top: 0;
+        margin-right: 5px;
+      }
+
+      h3{
+        font-size: 19px;
+      }
+    }
+  }
+
+  .point-info{
+    margin-top:22px;
+    border-top: 1px solid #e3e3e3;
+    padding: 15px 24px;
+    height: auto;
+    line-height: 1.5;
+
+    p{
+      font-size: 11px;
+      line-height: 16px;
+      letter-spacing: -.5px;
+    }
+
+    &+span{
+      display: block;
+      padding: 0 24px 15px;
+      height: auto;
+      font-size: 11px;
+      line-height: 16px;
+      letter-spacing: -.5px;
+      border-bottom: 1px solid #e3e3e3;
+    }
+  }
+
+  .point-btn{
+    position: fixed;
+    height: 55px;
+    line-height: 55px;
+    font-size: 20px;
+    z-index: 50;
+  }
+
+  .point-detail{
+    margin-top: 30px;
+    border-top: 8px solid #f1f1f1;
+
+    h3{ 
+      padding: 18px 24px;
+      border-top: 1px solid #dfdfdf;
+      border-bottom: 1px solid #dfdfdf;
+      font-size: 14px;
+      font-weight: 700;
+      color: #1d1d1d;
+      line-height: 16px;
+    }
+
+    .point-detail-txt {
+      margin: 0;
+      padding: 20px 24px 50px;
+      font-size: 13px;
+      color: #666;
+      line-height: 20px;
+      letter-spacing: -.6px;
+      border:0;
+    }
+  }
+}

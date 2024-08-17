@@ -9,16 +9,16 @@ import ImageWithFallback from "../../ImageWithFallback";
 // import "../../../../styles/components/bestBrand.scss";
 
 const BestBrandItem = ({ item }) => {
-  let categCd_lvl1 = '';
+  let linkURL = '';
   if(item.categCd === 'CONV'){
-    categCd_lvl1 = 'PS_CONV';
+    linkURL = `/points/point_detail?categCd=PS_CONV&level=1&brandId=${item.brandId}`
   }else if(item.categCd === 'WEST' || item.categCd === 'CAFE' || item.categCd === 'CHIKIN' || item.categCd === 'CONV' || item.categCd === 'JAPAN'){
-    categCd_lvl1 = 'PS_FOOD';
+    linkURL = `/points/point_detail?categCd=PS_FOOD&level=1&categCd_lvl2=${item.categCd}&brandId=${item.brandId}`;
   }else{
-    categCd_lvl1 = 'PS_PRODUCT';
+    linkURL = `/points/point_detail?categCd=PS_PRODUCT&level=1&brandId=${item.brandId}`;
   }
   return (
-    <Link href={`/points/point_detail?categCd=${categCd_lvl1}&categCd_lvl2=${item.categCd}&brandId=${item.brandId}`}>
+    <Link href={linkURL}>
       <div className="brand-slider-card">
         <ImageWithFallback
           src={item.imgLink}

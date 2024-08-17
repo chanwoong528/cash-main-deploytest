@@ -52,12 +52,14 @@ const PointShopTable = ({ type, categCd, data, navData }) => {
     setCurTab(navId);
     
   }, []);
-  
+
+  const urlLink = categCd === 'PS_FOOD' ? `/points/point_detail?categCd=${categCd}&level=1&categCd_lvl2=ALL` : `/points/point_detail?categCd=${categCd}&level=1`
+
   return (
     <section className="point-shop-section">
       <header className="point-shop-section-header">
         <h3>{categCd === 'PS_CONV' ? '편의점' : categCd === 'PS_PRODUCT' ? '상품권/쿠폰' : 'Food'}</h3>
-        <Link href={"/"}>전체보기</Link>
+        <Link href={urlLink}>전체보기</Link>
       </header>
       {POINTSHOP_LIST_TYPE.WITH_NAV === type ? (
         <TableNav
@@ -73,7 +75,7 @@ const PointShopTable = ({ type, categCd, data, navData }) => {
             curData.map((item)=>{
               return (
                 <div key={item.brandId} className="item">
-                  <Link href={"/"}>
+                  <Link href={`/points/point_detail?categCd=${categCd}&level=1&categCd_lvl2=&brandId=${item.brandId}`}>
                     <div className="img">
                       <ImageWithFallback
                         src={item.imgLink}

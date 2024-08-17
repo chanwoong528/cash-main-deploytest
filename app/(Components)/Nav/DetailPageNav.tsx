@@ -13,15 +13,16 @@ const DetailPageNav = ({ pageType, navList }) => {
 
   const onClickTabBtn = (tableIdx, categCd) => {
     if (pageType === URL.POINT && categCd !== '') {
-      router.push(`${pageType}/point_detail?categCd=${categCd}&categCd_lvl2=${categCd === 'PS_FOOD' ? 'CAFE' : categCd === 'PS_CONV' ? 'CONV' : 'COUPON'}&cpage=1`);
-      // return router.refresh();
+      if(categCd === 'PS_FOOD'){
+        router.push(`${pageType}/point_detail?categCd=${categCd}&level=1&categCd_lvl2=ALL`);
+      }else{
+        router.push(`${pageType}/point_detail?categCd=${categCd}&level=1`);
+      }
     } else {
       router.push(`${pageType}?categCd=${!!categCd ? categCd : ""}`);
     }
 
     // router.push(`${pageType}?categCd=${!!categCd ? categCd : ""}`);
-
-
     // return router.refresh();
   };
 

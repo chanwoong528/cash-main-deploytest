@@ -12,9 +12,22 @@ export const getPointShopHome = async () => {
   }
 };
 
-export const getPointShopDetail = async (level, params) => {
-  const fetchPointshop = await http.get(`/pointshop/home/${level}`, {
+export const getPointShopDetail = async (categ, level, params) => {
+  const fetchPointshop = await http.get(`/pointshop/list/${level}/${categ}`, {
     params: params,
+  });
+
+  if (fetchPointshop.code === 200) {
+    let data = await fetchPointshop.data;
+    return data;
+  } else {
+    return { message: "500 error" };
+  }
+};
+
+export const getPointShopView = async (goodsId) => {
+  const fetchPointshop = await http.get(`/pointshop/item/view`, {
+    params: { goodsId : goodsId },
   });
 
   if (fetchPointshop.code === 200) {
