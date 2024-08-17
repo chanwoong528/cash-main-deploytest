@@ -23,6 +23,7 @@ export const getShoppingMallPage = async (params) => {
   });
   if (fetchMallPage.code === 200) {
     const data = await fetchMallPage.data;
+    console.log(data);
 
     return data;
   } else {

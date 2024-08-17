@@ -83,7 +83,7 @@ const ComponentType = ({ itemList, callPage }) => {
           }
         }}
       >
-        {itemList.map((item, idx) => {
+        {itemList?.map((item, idx) => {
           return (
             <SwiperSlide key={item.productNum ?? idx}>
               <HotDealItem item={item} key={item.brandId} />
@@ -109,7 +109,7 @@ const ComponentType = ({ itemList, callPage }) => {
           }
         }}
       >
-        {itemList.map((item, idx) => {
+        {itemList?.map((item, idx) => {
           return (
             <SwiperSlide key={item.productNum ?? idx}>
               <ShoppingItem item={item} key={item.brandId} />
