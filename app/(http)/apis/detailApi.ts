@@ -12,8 +12,8 @@ export const getPointShopHome = async () => {
   }
 };
 
-export const getPointShopDetail = async (level, params) => {
-  const fetchPointshop = await http.get(`/pointshop/list/lvl1/${level}`, {
+export const getPointShopDetail = async (categ, level, params) => {
+  const fetchPointshop = await http.get(`/pointshop/list/${level}/${categ}`, {
     params: params,
   });
 

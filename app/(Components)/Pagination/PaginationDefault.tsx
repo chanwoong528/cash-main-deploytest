@@ -35,7 +35,7 @@ const PaginationDefault = ({ paginationData, totalPages, subPagination }) => {
             `${pathname}?categCd=${
               searchParams.get("categCd") ? searchParams.get("categCd") : ""
             }&level=1&categCd_lvl2=${
-              searchParams.get("categCd_lvl2") ? searchParams.get("categCd_lvl2") : ""
+              searchParams.get("categCd_lvl2") ? searchParams.get("categCd_lvl2") : "ALL"
             }&brandId=${
               searchParams.get("brandId") ? searchParams.get("brandId") : ""
             }&cpage=${
@@ -49,7 +49,7 @@ const PaginationDefault = ({ paginationData, totalPages, subPagination }) => {
             `${pathname}?categCd=${
               searchParams.get("categCd") ? searchParams.get("categCd") : ""
             }&level=1&categCd_lvl2=${
-              searchParams.get("categCd_lvl2") ? searchParams.get("categCd_lvl2") : ""
+              searchParams.get("categCd_lvl2") ? searchParams.get("categCd_lvl2") : "ALL"
             }&brandId=${
               searchParams.get("brandId") ? searchParams.get("brandId") : ""
             }&cpage=${

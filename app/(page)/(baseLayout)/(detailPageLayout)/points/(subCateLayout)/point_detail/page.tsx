@@ -7,13 +7,6 @@ import PointShopDetailProductTable from "@/app/(Components)/ItemTable/PointShopD
 import { getPointShopDetail, getDetailList } from "@/app/(http)/apis/detailApi";
 
 async function getData({ searchParams } : { searchParams: { cateCd: string, level: string, categCd_lvl2: string, brandId: string, categCd: string, cpage: string, subCpage: string } }) {
-  let params = {
-    categCd: searchParams.categCd || null,
-    // categCd_lvl2: searchParams.categCd_lvl2 || null,
-    cpage: searchParams.subCpage || 1,
-    size:12
-  };
-  
   let itemParams = {
     categCd: searchParams.categCd || null,
     level: searchParams.level || null,
@@ -22,11 +15,14 @@ async function getData({ searchParams } : { searchParams: { cateCd: string, leve
     size:12
   }
 
-  const pointDetailData = await getPointShopDetail(searchParams.categCd, params);
+  const pointDetailData = searchParams.categCd === 'PS_FOOD' && searchParams.categCd_lvl2 !== 'ALL' ? 
+    await getPointShopDetail(searchParams.categCd_lvl2, 'lvl2', {size: 10, cpage: searchParams.subCpage})
+    : await getPointShopDetail(searchParams.categCd, 'lvl1', {size: 10, cpage: searchParams.subCpage})
+  
   const pointDetailBrandData = await getDetailList('/pointshop/item', itemParams);
   
   let pageTitle;
-  switch (params.categCd){
+  switch (searchParams.categCd){
     case 'PS_PRODUCT': 
       pageTitle = "상품권/쿠폰";
       break;
@@ -41,11 +37,11 @@ async function getData({ searchParams } : { searchParams: { cateCd: string, leve
       break;
   }
 
-  const categCd_lvl2_List = pointDetailData.pointshopList.contents.map((el:{ brandId : string, brandName : string,categCd : string, imgLink : string, image : string})=>{
+  const categCd_lvl2_List = pointDetailData.pointshopList?.contents.map((el:{ brandId : string, brandName : string,categCd : string, imgLink : string, image : string})=>{
     el.image = el.imgLink;
     return el;
   })
-  
+
   return {
     pageTitle: pageTitle,
     categCd_lvl2 : {

@@ -17,7 +17,7 @@ const TableNav = ({ tableCate, navData, onClickNavItem, curTab }) => {
               key={navItem.categCd + idx}
               className={curTab === navItem.categCd ? "on" : ""}
             >
-              <button onClick={() => onClickNavItem(navItem.categCd)}>
+              <button onClick={() => onClickNavItem(navItem)}>
                 {navItem.title}
               </button>
             </li>
